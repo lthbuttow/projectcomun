@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<?php
-include 'classes/contato.class.php';
-$contato = new Contato();
-?>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -78,6 +74,9 @@ $contato = new Contato();
   <div class="row">
     <div class="col-sm-6 mx-auto">
         <div class="well text-blue" style="margin-top: 10%;">
+          <div id="alert">
+          
+          </div>
         <h2 class="text-center pb-2">Envie sua mensagem</h2>
         <hr class="hr-blue">
         <form role="form" id="contactForm">
@@ -97,9 +96,6 @@ $contato = new Contato();
               <button class="button blue" type="submit" id="enviaEmail"><span>Enviar</span></button>
             </div>  
         </form>
-        <div id="alert">
-          
-        </div>
         </div>
     </div>
   </div>

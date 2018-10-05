@@ -73,5 +73,7 @@ $(function() {
 	} else {
 		$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível enviar sua mensagem,revise seus dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			}
+		$('#email').val("");
+		$('#message').val("");	
 	});
 });
