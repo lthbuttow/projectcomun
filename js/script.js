@@ -38,7 +38,7 @@ $(function() {
 
 // mudança de cor de fundo do form
 	$('#formulario').bind('mouseover', function(){
-		$(this).css('background-color','#ecf0f1').css('transition','0.5s all ease-in-out')
+		$(this).css('background-color','#f5f5f5').css('transition','0.5s all ease-in-out')
 	});
 
 	$('#formulario').bind('mouseout', function(){
@@ -58,7 +58,7 @@ $(function() {
 		if (email.length > 0 && mensagem.length > 0){
 		$.ajax({
    		type:"POST",
-    	url:"classes/teste.php",
+    	url:"classes/contato_enviar.php",
     	data:{email:email, mensagem:mensagem},
     	dataType:"json",
     	success: function(resultado) {

@@ -13,15 +13,6 @@ include 'inc/header.php';
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#about" id="scrollSuave">Sobre</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#formulario" data-toggle="modal" data-target="#exampleModalCenter">Contato</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#portfolio" id="scrollSuave">Área do Cliente</a>
-            </li>
             <?php
             if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
             ?>
@@ -45,10 +36,10 @@ include 'inc/header.php';
     <header class="masthead text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
-          <div class="col-lg-10 mx-auto">
-            <h1 class="text-uppercase">
-              <strong>Comun.</strong>
-            </h1>
+          <div class="col-lg-10 mx-auto mt-5">
+            <h3 class="text-left">
+              <strong>Área do Administrador</strong>
+            </h3>
             <hr class="hr">
           </div>
           <div class="col-lg-8 mx-auto">
@@ -65,7 +56,7 @@ include 'inc/header.php';
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">Aproximação Cliente x Empresa</h2>
+            <h2 class="section-heading text-white">ADMIN</h2>
             <hr class="light my-4 hr">
             <p class="text-faded mb-4">Com nosso sistema você vai poder manter uma relação direta com seus clientes, o chat é tudo o que você precisa, já com a possibilidade de enviar arquivos diretamente por aqui evitamos gasto de tempo e dinheiro com seu deslocamento.</p>
             <a class="button blue" href="#news"><span>Mais</span></a>
