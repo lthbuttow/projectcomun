@@ -1,13 +1,15 @@
 <?php 
 include 'inc/header.php'; 
+if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
 ?>
 <!-- topo -->
 <body>
 <div id="page-top" role="header">
-	
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="#page-top">Comun.</a>
+        <a class="navbar-brand" href="admin.php">Comun.</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,19 +34,38 @@ include 'inc/header.php';
         </div>
       </div>
     </nav>   
-
-    <header class="masthead text-center text-white d-flex">
+    <header class="mastheads text-center text-white d-flex">
       <div class="container my-auto">
+        <h2>Olá <?php echo $_SESSION['nome_adm'];  ?> !</h2>
+        <a class="btn btn-primary" href="add_user.php" role="button">ADICIONAR USUÁRIO</a>
         <div class="row">
-          <div class="col-lg-10 mx-auto mt-5">
-            <h3 class="text-left">
-              <strong>Área do Administrador</strong>
-            </h3>
-            <hr class="hr">
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <a href="#send"><i class="fas fa-4x fa-file-upload text-orange mb-3 sr-icon-1"></i>
+              <h4 class="mb-3">Enviar Arquivos</h4></a>
+              <p class="text-muted mb-0">Envie e receba arquivos, interaja com seus clientes</p>
+            </div>
           </div>
-          <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">Simples, rápido e prático. Comunique-se</p>
-            <a class="button" id="btinfo" href="#about"><span>Info</span></a> 
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <a href="#chat"><i class="fas fa-4x fa-comment-dots text-orange mb-3 sr-icon-2"></i>
+              <h4 class="mb-3">Iniciar Chat</h4></a>
+              <p class="text-muted mb-0">Uma opção de conversa em tempo real!</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <a href="#users_list"><i class="fas fa-4x fa-id-card text-orange mb-3 sr-icon-3"></i>
+              <h4 class="mb-3">Menu de Usuários</h4></a>
+              <p class="text-muted mb-0">Site preparado para ser acessado por todos tipos de dispositivos</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <a href="mensagens.php"><i class="fas fa-4x fa-envelope text-orange mb-3 sr-icon-4"></i>
+              <h4 class="mb-3">Mensagens</h4></a>
+              <p class="text-muted mb-0">Verifique as mensagens recebidas em sua caixa de mensagens</p>
+            </div>
           </div>
         </div>
       </div>
@@ -52,13 +73,42 @@ include 'inc/header.php';
 </div>
 
 <article>
-	<section class="bg-primary" id="about">
+    <section class="bg-primary" id="about">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">ADMIN</h2>
-            <hr class="light my-4 hr">
-            <p class="text-faded mb-4">Com nosso sistema você vai poder manter uma relação direta com seus clientes, o chat é tudo o que você precisa, já com a possibilidade de enviar arquivos diretamente por aqui evitamos gasto de tempo e dinheiro com seu deslocamento.</p>
+            <div class="table-responsive-md">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Primeiro</th>
+                      <th scope="col">Último</th>
+                      <th scope="col">Nickname</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
             <a class="button blue" href="#news"><span>Mais</span></a>
           </div>
         </div>
@@ -136,4 +186,10 @@ include 'inc/header.php';
 
 <?php  
 include 'inc/footer.php';
+} else{
+    header("Location: index.php");
+}
 ?>
+
+
+

@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-require 'admin.class.php';
+require '../classes/admin.class.php';
 
 $admin = NEW Admin();
 
@@ -14,6 +14,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 	if ($result == true) {
 		
 		$_SESSION['id_adm'] = $result['id_admin'];
+		$_SESSION['nome_adm'] = $result['nome'];
 		header("Location: ../admin.php");
 
 	} else{

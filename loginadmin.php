@@ -2,7 +2,7 @@
 include 'inc/header.php'; 
 ?>
 <body class="form">
-    <form method="POST" action="classes/loga_adm.php" class="form-signin text-center">
+    <form method="POST" action="funcs/loga_adm.php" class="form-signin text-center">
     	<?php 
     	if (isset($_SESSION['mensagem'])) {
     		echo $_SESSION['mensagem'];

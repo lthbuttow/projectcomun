@@ -1,0 +1,29 @@
+[33mcommit e125d4e702a8c7dbd4582a96d273ec508f316234[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Lucas Büttow <lucas_buttow@outlook.com>
+Date:   Tue Oct 16 11:44:50 2018 -0300
+
+    Terminando o login do administrador e começando a página de admin
+
+[33mcommit fafab1dde664dade95272029d020b192074597e4[m
+Author: Lucas Büttow <lucas_buttow@outlook.com>
+Date:   Fri Oct 5 11:56:39 2018 -0300
+
+    Criação login admin
+
+[33mcommit b3686c8ddd918f187f9ab6440f76849f86185897[m
+Author: Lucas Büttow <lucas_buttow@outlook.com>
+Date:   Fri Oct 5 10:26:01 2018 -0300
+
+    Fim da criação da página inicial e alterações finais na funcionalidade de envio de mensagens
+
+[33mcommit 83872e69227eff4c44082904d624b17c4c71835b[m
+Author: Lucas Büttow <lucas_buttow@outlook.com>
+Date:   Fri Oct 5 10:16:05 2018 -0300
+
+    Atualização do Readme
+
+[33mcommit 2c911ed0ba002e1095f0e97d9a931023084e145a[m
+Author: Lucas Büttow <lucas_buttow@outlook.com>
+Date:   Fri Oct 5 09:50:29 2018 -0300
+
+    Primeiro commit do sistema

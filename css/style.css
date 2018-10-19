@@ -341,3 +341,97 @@ header.masthead p {
   background-color: #2c3e50;
   color: #FFF;
 }
+/*admin*/
+header.mastheads{
+  padding-top: 10rem;
+  padding-bottom: calc(10rem-56px);
+  background-color: #2c3e50;
+}
+header.mastheads hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+header.mastheads h1 {
+  font-size: 2rem;
+}
+
+header.mastheads p {
+  font-weight: 300;
+}
+
+header.mastheads a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+@media (min-width: 768px) {
+  header.mastheads p {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 992px) {
+  header.mastheads {
+    height: 100vh;
+    min-height: 650px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  header.mastheads h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  header.mastheads h1 {
+    font-size: 4rem;
+  }
+}
+/*mensagens*/
+header.mastheadss{
+  padding-top: 10rem;
+  padding-bottom: calc(10rem-56px);
+  background-color: #2c3e50;
+}
+header.mastheadss hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+header.mastheadss h1 {
+  font-size: 2rem;
+}
+
+header.mastheadss p {
+  font-weight: 300;
+}
+
+header.mastheadss a {
+  text-decoration: none;
+  color: #2C3E50;
+}
+
+@media (min-width: 768px) {
+  header.mastheadss p {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 992px) {
+  header.mastheadss {
+    height: 100vh;
+    min-height: 650px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  header.mastheadss h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  header.mastheadss h1 {
+    font-size: 4rem;
+  }
+}

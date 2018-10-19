@@ -1,24 +1,25 @@
 <?php 
-require 'contato.class.php';
+require '../classes/admin.class.php';
 
 $array = array('Status' => 'Vazio' );
 
 
-$contato = new Contato();
-if (!empty($_POST['email']) && !empty($_POST['mensagem'])) {
+$admin = new Admin();
+if (!empty($_POST['email']) && !empty($_POST['nome'])) {
 
+$nome = $_POST['nome'];
 $email = $_POST['email'];
-$text = $_POST['mensagem'];
+$senha= $_POST['senha'];
 
 } else {
 	$array = array('Status' => 'ERRO' );
 }
 
 
-$result = $contato->insere($email,$text);
+$resultado = $admin->insereUser($nome,$email,$senha);
 	
 	
-	if ($result == true) {
+	if ($resultado == true) {
 	
 	$array = array('Status' => 'OK' );
 	

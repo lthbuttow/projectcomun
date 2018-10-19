@@ -1,19 +1,4 @@
 $(function() {
-
-// mudança de cor da barra
-	$(window).bind('scroll',function(){
-
-		if ($(this).scrollTop() > 70){
-			$('#mainNav').addClass('bg-white')
-			$('nav a').css('color','#F4511E')
-			$('nav li a').css('color','#2c3e50')
-			$('nav').addClass('border')
-		} else {
-			$('#mainNav').removeClass('bg-white')
-			$('nav a').removeAttr('style')
-			$('nav').removeClass('border')
-		}
-	});
 	
 // scroll suave	
 	$('a[href^="#"]').on('click', function(e) {
@@ -58,7 +43,7 @@ $(function() {
 		if (email.length > 0 && mensagem.length > 0){
 		$.ajax({
    		type:"POST",
-    	url:"funcs/contato_enviar.php",
+    	url:"classes/contato_enviar.php",
     	data:{email:email, mensagem:mensagem},
     	dataType:"json",
     	success: function(resultado) {
@@ -77,39 +62,9 @@ $(function() {
 		$('#message').val("");	
 	});
 
-//requisição ajax para cadastrar usuário
-
-	$('#adiciona_user').bind('click', function(e){
-		e.preventDefault();
-		
-		var nome = $('#nome').val();		
-		var email = $('#email').val();
-		var senha = $('#senha').val();
-
-		if (email.length > 0 && nome.length > 0){
-		$.ajax({
-   		type:"POST",
-    	url:"funcs/insere_user.php",
-    	data:{nome:nome,email:email,senha:senha},
-    	dataType:"json",
-    	success:function(resultado) {
-    	console.log(resultado.Status);
-		if (resultado.Status == 'OK'){
-			$('div #alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Usuário cadastrado!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-
-		} else {
-			 $('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar usuário,revise os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		}
-		}
-		});
-	} else {
-		$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar,revise os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			}
-		$('#email').val("");
-		$('#nome').val("");
-		$('#senha').val("");	
-	});	
-
-
+	// sidebar
+	    $('#sidebarCollapse').bind('click', function () {
+	        $('#sidebar').toggleClass('active');
+	    });
 });
 

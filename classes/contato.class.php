@@ -25,12 +25,13 @@ class Contato extends BD{
 		return false;
 		}
 	}
-	public function listar(){
+	public function getAll(){
 
 	 	$consulta = $this->pdo->query("SELECT * FROM contato");
 
 		//$consulta->execute();
-	 	return $consulta->fetchAll();
+	 	$resultado = $consulta->fetchAll();
+	 	return $resultado;
 	 }
 }
 ?>
