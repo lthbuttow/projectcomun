@@ -20,7 +20,7 @@ include 'inc/header.php';
               <a class="nav-link" href="#formulario" data-toggle="modal" data-target="#exampleModalCenter">Contato</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#portfolio" id="scrollSuave">Área do Cliente</a>
+              <a class="nav-link" href="loginuser.php" id="scrollSuave">Área do Cliente</a>
             </li>
             <?php
             if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {

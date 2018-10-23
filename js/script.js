@@ -108,8 +108,15 @@ $(function() {
 		$('#email').val("");
 		$('#nome').val("");
 		$('#senha').val("");	
-	});	
+	});
 
+// scroll edição de dados user 
+
+	$('#edita').hide();
+
+	$('#edita_user').bind('click',function(){
+		$('#edita').slideToggle('slow');
+	});
 
 });
 

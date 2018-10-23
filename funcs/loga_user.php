@@ -1,21 +1,20 @@
 <?php
 session_start(); 
-require '../classes/admin.class.php';
+require '../classes/user.class.php';
 
-$admin = NEW Admin();
+$user = NEW User();
 
 if (isset($_POST['email']) && !empty($_POST['email'])) {
 	$email = $_POST['email'];
 	$senha = $_POST['senha'];
 
-	$result = $admin->login($email,$senha);
+	$result = $user->login($email,$senha);
 
-	// var_dump($result);
 	if ($result == true) {
 		
-		$_SESSION['id_adm'] = $result['id_admin'];
-		$_SESSION['nome_adm'] = $result['nome'];
-		header("Location: ../admin.php");
+		$_SESSION['id_user'] = $result['id_user'];
+		$_SESSION['nome_user'] = $result['nome'];
+		header("Location: ../user.php");
 
 	} else{
 		$_SESSION['mensagem'] = '
@@ -25,7 +24,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>';
-		header("Location: ../loginadmin.php");
+		header("Location: ../loginuser.php");
 	}
 
 } else{
@@ -36,7 +35,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 	    <span aria-hidden="true">&times;</span>
 	  </button>
 	</div>';	
-	header("Location: ../loginadmin.php");
+	header("Location: ../loginuser.php");
 }
 
 ?>
