@@ -113,10 +113,71 @@ $(function() {
 // scroll edição de dados user 
 
 	$('#edita').hide();
+	$('#envia').hide();
 
 	$('#edita_user').bind('click',function(){
+		$('#envia').hide();
 		$('#edita').slideToggle('slow');
 	});
 
+
+	$('#envia_user').bind('click',function(){
+		$('#edita').hide();
+		$('#envia').slideToggle('slow');
+	});
+
+//requisição para mostrar dados do usuário a ser editado
+	$('#edita_user').bind('click', function(e){
+		e.preventDefault();
+		
+		var id = $('#id_user').val();		
+	
+		$.ajax({
+   		type:"POST",
+    	url:"funcs/dados_editar_user.php",
+    	data:{id_user:id},
+    	dataType:"json",
+    	success:function(resultado) {
+		 if (resultado.Status == 'OK'){
+			$('#nome').val(resultado.nome);
+			$('#email').val(resultado.email);
+			$('#senha').val(resultado.senha);
+		}
+
+		 else {
+		 	 $('#alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível encontrar os dados, e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			}
+		}
+		});	
+	});
+	
+//requisição para eviar os dados do usuário editado
+$('#envia_alter').bind('click', function(e){
+	e.preventDefault();
+	
+	var id = $('#id_user').val();
+	var nome = $('#nome').val();
+	var email = $('#email').val();
+	var senha = $('#senha').val()
+
+	$.ajax({
+	type:"POST",
+	url:"funcs/edita_user.php",
+	data:{id_user:id,nome:nome,email:email,senha:senha},
+	dataType:"json",
+	success:function(resultado) {
+	 if (resultado.Status == 'OK'){
+		$('#alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>OK! </strong>Usuário cadastrado com sucesso!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	}
+
+	 else {
+		  $('#alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível encontrar os dados, e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		}
+	}
+	});	
+});	
 });
+
+
+
 
