@@ -33,7 +33,12 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
           </ul>
         </div>
       </div>
-    </nav>   
+    </nav>
+      <?php
+      require('classes/admin.class.php');
+      $admin = NEW Admin(); 
+      $result = $admin->getAdmin();
+      ?>
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
             <div id="alert">
@@ -47,12 +52,12 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
             <a class="btn btn-md btn-outline-success" id="envia_user" style="width: 180px;" role="button">ENVIAR ARQUIVOS</a>
           </div>
           <div class="col-md-2 mt-2">
-            <a class="btn btn-md btn-outline-warning" style="width: 180px;" href="edit_user.php" role="button">SUPORTE</a>
+            <a class="btn btn-md btn-outline-warning modal_ajax" id="chat_enviar" href="chat.php?id_suporte=<?php echo $result['id_admin'];?>" style="width: 180px;" role="button">SUPORTE</a>
           </div>          
         </div>
           <!-- editar dados -->
           <div class="row justify-content-center mt-4 mb-5" id="edita">
-            <div class="col-md-6">
+            <div class="col-md-6 ">
               <form method="POST" id=form_editar>
                 <input type="hidden" id="id_user" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
                 <div class="form-group">
@@ -82,7 +87,13 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                   <button type="submit" class="btn btn-info" id="envia_user">Enviar</button>
               </form> 
             </div>         
-          </div>          
+          </div> 
+          <!-- chat-->
+          <!-- <div class="row justify-content-center mt-4 mb-5" id="chat">
+            <div class="col-md-6">
+            
+            </div>
+          </div>                              -->
       </div>    
     </article>
 
@@ -91,6 +102,11 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
   <p class="pb-2 mb-0 pt-2">Desenvolvido por Lucas Büttow <i class="fas fa-copyright"></i></p>
 </div>
 
+<div class="modal_bg">
+	<div class="modal_base">
+		
+	</div>
+</div>
 <?php  
 include 'inc/footer.php';
 } else{

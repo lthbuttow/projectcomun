@@ -38,5 +38,19 @@ class Admin extends BD{
 		return false;
 		}		
 	}
+
+	public function getAdmin(){
+		$sql = "SELECT * FROM admin";
+		$sql = $this->pdo->query($sql);
+		
+		if($sql->execute()){
+
+		$result = $sql->fetch();
+		
+		return $result;
+	} else{
+		return false;
+		}		
+	}
 }
 ?>
