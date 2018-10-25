@@ -469,6 +469,31 @@ header.mastheadss a {
   border-radius: 5px;
 	margin-left:-250px;
 }
+/* chat */
+.chat-i{
+	border-radius: 8px;
+	padding: 5px;
+	max-width: 80%;
+	background-color: #CCE2FB;
+	box-shadow: #333 0px 0px 1px;
+	display: table;
+	margin: 2px;
+}
+
+.chat-you{
+	border-radius: 8px;
+	padding: 5px;
+	max-width: 80%;
+	background-color: #EAEAEA;
+	box-shadow: #333 0px 0px 1px;
+	display: table;
+	margin: 2px;
+}
+
+#lista{
+  max-height: 32vh;
+  overflow: scroll;
+}
 
 /* Scroll Personalizado */
 

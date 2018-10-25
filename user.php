@@ -52,7 +52,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
             <a class="btn btn-md btn-outline-success" id="envia_user" style="width: 180px;" role="button">ENVIAR ARQUIVOS</a>
           </div>
           <div class="col-md-2 mt-2">
-            <a class="btn btn-md btn-outline-warning modal_ajax" id="chat_enviar" href="chat.php?id_suporte=<?php echo $result['id_admin'];?>" style="width: 180px;" role="button">SUPORTE</a>
+            <a class="btn btn-md btn-outline-warning " id="chat_enviar" href="chat.php?id_suporte=<?php echo $result['id_admin'];?>" style="width: 180px;" role="button">SUPORTE</a>
           </div>          
         </div>
           <!-- editar dados -->
@@ -102,13 +102,16 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
   <p class="pb-2 mb-0 pt-2">Desenvolvido por Lucas Büttow <i class="fas fa-copyright"></i></p>
 </div>
 
-<div class="modal_bg">
+<!-- <div class="modal_bg">
 	<div class="modal_base">
-		
+    <div class="modal_header" align="center"><button class="btn btn-xs-success sair">Sair</button></div>
+      <div class="modal_content">
+
+      </div>          
 	</div>
-</div>
+</div> -->
 <?php  
-include 'inc/footer.php';
+require_once ('inc/footer.php');
 } else{
     header("Location: index.php");
 }

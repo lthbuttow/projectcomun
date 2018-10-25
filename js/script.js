@@ -6,7 +6,7 @@ function atualizar(){
 		url:'conversa.php',
 		dataType: 'html',
 		success: function(html){
-			$('#lista').html("conversa: "+html);
+			$('#lista').html(html);
 		},
 		error:function(){
 			alert("Ocorreu um erro");
@@ -14,7 +14,7 @@ function atualizar(){
 	});
 }
 
-setInterval("atualizar()", 3000);
+
 
 $(function() {
 
@@ -132,26 +132,21 @@ $(function() {
 
 	$('#edita').hide();
 	$('#envia').hide();
-	$('#chat').hide();
 
 	$('#edita_user').bind('click',function(){
-		$('#chat').hide();
 		$('#envia').hide();
 		$('#edita').slideToggle('slow');
 	});
 
 
 	$('#envia_user').bind('click',function(){
-		$('#chat').hide();
 		$('#edita').hide();
 		$('#envia').slideToggle('slow');
 	});
-	
-	$('#chat_enviar').bind('click',function(){
-		$('#envia').hide();
-		$('#edita').hide();
-		$('#chat').slideToggle('slow');
-	});	
+
+	// $('#chat_enviar').bind('click',function(){;
+	// 	$('#chat').slideToggle('slow');
+	// });	
 //requisição para mostrar dados do usuário a ser editado
 	$('#edita_user').bind('click', function(e){
 		e.preventDefault();
@@ -203,31 +198,19 @@ $('#envia_alter').bind('click', function(e){
 	});	
 });
 
-//modal chat
-$('.modal_ajax').on('click', function(e){
-	e.preventDefault();
-
-	$('.modal_base').html('Carregando...');
-	$('.modal_bg').show();
-
-	var link = $(this).attr('href');
-
-	$.ajax({
-		url:link,
-		type:'GET',
-		success:function(html){
-			$('.modal_base').html(html);
-		}
-	});
-});
-
-	atualizar();
+	// setInterval("atualizar()", 3000);
+	console.log(window.location.pathname);
+	if(window.location.pathname == '/projetocomun/chat.php'){
+		alert('entrou');
+		setInterval("atualizar()", 3000);
+	}
 
 	$('#form-chat').bind('submit',function(e){
 
 		e.preventDefault();
-
-		var txt = $(this).serialize();	
+		
+		var txt = $(this).serialize();
+		console.log(window.location.href);	
 
 		$.ajax({
 			type:'POST',
@@ -241,6 +224,7 @@ $('.modal_ajax').on('click', function(e){
 		$('#mensagem').val('');	
 
 	});
+	
 });
 
 
