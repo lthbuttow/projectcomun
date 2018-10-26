@@ -1,6 +1,6 @@
 <?php 
 include 'inc/header.php'; 
-if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
+if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 ?>
 <!-- topo -->
 <body>
@@ -16,7 +16,7 @@ if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <?php
-            if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
+            if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
             ?>
             <li class="nav-item">
               <a class="nav-link" href="logout.php" id="scrollSuave">Encerrar Sessão</a>
@@ -36,7 +36,7 @@ if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
     </nav>   
     <header class="mastheads text-center text-white d-flex">
       <div class="container my-auto">
-        <h2>Olá <?php echo $_SESSION['nome_adm'];  ?> !</h2>
+        <h2>Olá <?php echo $_SESSION['nome'];  ?> !</h2>
         <a class="btn btn-primary" href="add_user.php" role="button">ADICIONAR USUÁRIO</a>
         <div class="row">
         <div class="col-lg-3 col-md-6 text-center">
@@ -48,7 +48,7 @@ if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <a href="#chat"><i class="fas fa-4x fa-comment-dots text-orange mb-3 sr-icon-2"></i>
+              <a href="chat_admin.php"><i class="fas fa-4x fa-comment-dots text-orange mb-3 sr-icon-2"></i>
               <h4 class="mb-3">Iniciar Chat</h4></a>
               <p class="text-muted mb-0">Uma opção de conversa em tempo real!</p>
             </div>

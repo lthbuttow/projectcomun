@@ -52,7 +52,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
             <a class="btn btn-md btn-outline-success" id="envia_user" style="width: 180px;" role="button">ENVIAR ARQUIVOS</a>
           </div>
           <div class="col-md-2 mt-2">
-            <a class="btn btn-md btn-outline-warning " id="chat_enviar" href="chat.php?id_suporte=<?php echo $result['id_admin'];?>" style="width: 180px;" role="button">SUPORTE</a>
+            <a class="btn btn-md btn-outline-warning " id="chat_enviar" href="chat.php?id_para=<?php echo $result['id_user'];?>" style="width: 180px;" role="button">SUPORTE</a>
           </div>          
         </div>
           <!-- editar dados -->

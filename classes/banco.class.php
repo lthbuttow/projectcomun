@@ -13,7 +13,7 @@ class BD {
     public function __construct() {
 
      try {
-            $this->pdo = new PDO("pgsql:host=localhost; dbname=projeto;  user=postgres;  password=12345");
+            $this->pdo = new PDO("pgsql:host=localhost; dbname=projeto3;  user=postgres;  password=12345");
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      
             } catch (PDOException  $e) {

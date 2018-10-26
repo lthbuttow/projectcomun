@@ -8,7 +8,7 @@ class User extends BD{
 	}
 
 	public function login($email,$senha){
-		$sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
+		$sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha AND admin = '0'";
 		$sql = $this->pdo->prepare($sql);
 		$sql->bindValue(':email', $email);
 		$sql->bindValue(':senha', $senha);
@@ -68,6 +68,20 @@ class User extends BD{
 	} else{
 		return false;
 		}
-	}			
+	}
+	
+	public function getUsuarios(){
+		$sql = "SELECT * FROM usuarios WHERE admin ='0'";
+		$sql = $this->pdo->query($sql);
+	
+		if($sql->execute()){
+
+		$result = $sql->fetchAll();
+		
+		return $result;
+	} else{
+		return false;
+		}
+	}
 }
 ?>

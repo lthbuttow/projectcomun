@@ -201,10 +201,9 @@ $('#envia_alter').bind('click', function(e){
 	// setInterval("atualizar()", 3000);
 	console.log(window.location.pathname);
 	if(window.location.pathname == '/projetocomun/chat.php'){
-		alert('entrou');
+		
 		setInterval("atualizar()", 3000);
 	}
-
 	$('#form-chat').bind('submit',function(e){
 
 		e.preventDefault();

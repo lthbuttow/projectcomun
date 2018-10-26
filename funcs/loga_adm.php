@@ -12,9 +12,9 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 
 	// var_dump($result);
 	if ($result == true) {
-		
-		$_SESSION['id_adm'] = $result['id_admin'];
-		$_SESSION['nome_adm'] = $result['nome'];
+		$_SESSION['admin'] = $result['admin'];
+		$_SESSION['id_user'] = $result['id_user'];
+		$_SESSION['nome'] = $result['nome'];
 		header("Location: ../admin.php");
 
 	} else{

@@ -8,7 +8,7 @@ class Admin extends BD{
 	}
 
 	public function login($email,$senha){
-		$sql = "SELECT * FROM admin WHERE email = :email AND senha = :senha";
+		$sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
 		$sql = $this->pdo->prepare($sql);
 		$sql->bindValue(':email', $email);
 		$sql->bindValue(':senha', $senha);
@@ -40,7 +40,7 @@ class Admin extends BD{
 	}
 
 	public function getAdmin(){
-		$sql = "SELECT * FROM admin";
+		$sql = "SELECT * FROM usuarios WHERE admin = '1'";
 		$sql = $this->pdo->query($sql);
 		
 		if($sql->execute()){

@@ -1,8 +1,7 @@
 <?php 
 include 'inc/header.php';
-if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
-	$_SESSION['id_suporte'] = $_GET['id_suporte'];
-	var_dump($_SESSION);
+if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm']) ) {
+	$_SESSION['id_para'] = $_GET['id_para'];
 ?>
 <!-- topo -->
 <body>
