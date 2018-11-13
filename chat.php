@@ -6,7 +6,8 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSI
 <!-- topo -->
 <body>
     <div class="row justify-content-center" >
-    <div class="col-md-10 mt-5">
+    <div class="col-md-6 mt-5">
+		<h1 class="text-center">CHAT - SUPORTE</h1>
 		<div id="content">
 			<div id="lista">
 

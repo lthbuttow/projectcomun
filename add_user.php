@@ -1,6 +1,6 @@
 <?php 
 include 'inc/header.php'; 
-if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
+if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 ?>
 <!-- topo -->
 <body>
@@ -16,7 +16,7 @@ if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <?php
-            if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
+            if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
             ?>
             <li class="nav-item">
               <a class="nav-link" href="logout.php" id="scrollSuave">Encerrar Sessão</a>
@@ -36,7 +36,7 @@ if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
     </nav>   
     <header class="mastheads text-center text-white d-flex">
       <div class="container my-auto">
-        <h2>Olá <?php echo $_SESSION['nome_adm'];  ?> !</h2>
+        <h2>Olá <?php echo $_SESSION['nome'];  ?> !</h2>
         <div class="row justify-content-center mt-4 mb-2">
           <div class="col-lg-6 col-md-6">
             <div id="alert">

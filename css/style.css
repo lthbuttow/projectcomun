@@ -490,8 +490,12 @@ header.mastheadss a {
 	margin: 2px;
 }
 
+#content{
+  height: 45vh;
+}
+
 #lista{
-  max-height: 32vh;
+  height: 45vh;
   overflow: scroll;
 }
 
@@ -524,3 +528,13 @@ header.mastheadss a {
   -webkit-border-radius: 3px;
   display: none;
 }
+
+ .btam {
+  width: 180px;
+}
+
+/* @media (min-width: 768px) {
+  .btam {
+    width: 160px;
+  }
+}  */

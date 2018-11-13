@@ -8,7 +8,7 @@ class Chat extends BD{
 	}
     
     public function consultaMsg($id_de,$id_para){
-        $sql = $this->pdo->prepare("SELECT * FROM (SELECT * FROM chat WHERE (id_de = :id_de AND id_para = :id_para) OR (id_de = :id_para AND id_para = :id_de) ORDER BY id DESC LIMIT 10) sub ORDER BY id ASC");
+        $sql = $this->pdo->prepare("SELECT * FROM (SELECT * FROM chat WHERE (id_de = :id_de AND id_para = :id_para) OR (id_de = :id_para AND id_para = :id_de) ORDER BY id DESC) sub ORDER BY id ASC");
         $sql->bindValue(":id_de", $id_de);
         $sql->bindValue(":id_para", $id_para);
         

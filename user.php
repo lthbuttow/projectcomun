@@ -41,18 +41,28 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
       ?>
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+            <?php 
+              if (isset($_SESSION['mensagem'])) {
+                echo $_SESSION['mensagem'];
+                unset($_SESSION['mensagem']);
+              }
+            ?>            
+            </div>
+        </div>
             <div id="alert">
             </div>
         <h2 class="mb-4 nm_user">Olá <?php echo $_SESSION['nome_user'];  ?> !</h2>
         <div class="row justify-content-center">
-          <div class="col-md-2 mt-2">
-            <a class="btn btn-md btn-outline-info" id="edita_user" style="width: 180px;" role="button">ALTERAR DADOS</a>
+          <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
+            <a class="btn btn-md btn-outline-info btam" id="edita_user" role="button">ALTERAR DADOS</a>
           </div>
-          <div class="col-md-2 mt-2">
-            <a class="btn btn-md btn-outline-success" id="envia_user" style="width: 180px;" role="button">ENVIAR ARQUIVOS</a>
+          <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
+            <a class="btn btn-md btn-outline-success btam" id="envia_user"  role="button">ENVIAR ARQUIVOS</a>
           </div>
-          <div class="col-md-2 mt-2">
-            <a class="btn btn-md btn-outline-warning " id="chat_enviar" href="chat.php?id_para=<?php echo $result['id_user'];?>" style="width: 180px;" role="button">SUPORTE</a>
+          <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
+            <a class="btn btn-md btn-outline-warning btam " id="chat_enviar" href="chat.php?id_para=<?php echo $result['id_user'];?>" role="button">SUPORTE</a>
           </div>          
         </div>
           <!-- editar dados -->
@@ -79,12 +89,12 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
           <!-- envio de arquivos-->
           <div class="row justify-content-center mt-4 mb-5" id="envia">
             <div class="col-md-6">
-              <form method="POST">
+              <form action="funcs/envia_arquivos.php?id_para=<?php echo $result['id_user'];?>" method="POST" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="arquivo">Envie seus arquivos aqui</label>
-                    <input type="file" name="arquivo" class="form-control-file" id="file" aria-describedby="enviodearquivos">
+                    <input type="file" name="arquivo" class="form-control-file" id="arquivo" aria-describedby="enviodearquivos">
                   </div>              
-                  <button type="submit" class="btn btn-info" id="envia_user">Enviar</button>
+                  <button type="submit" class="btn btn-primary" id="envia_arquivos">Enviar</button>
               </form> 
             </div>         
           </div> 
@@ -102,14 +112,6 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
   <p class="pb-2 mb-0 pt-2">Desenvolvido por Lucas Büttow <i class="fas fa-copyright"></i></p>
 </div>
 
-<!-- <div class="modal_bg">
-	<div class="modal_base">
-    <div class="modal_header" align="center"><button class="btn btn-xs-success sair">Sair</button></div>
-      <div class="modal_content">
-
-      </div>          
-	</div>
-</div> -->
 <?php  
 require_once ('inc/footer.php');
 } else{
