@@ -39,6 +39,14 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
 
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Mensagens</li>
+        </ol>
+      </nav>
+
         <?php
         $contato = $contato->getAll();
         ?>

@@ -93,7 +93,11 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                   <div class="form-group">
                     <label for="arquivo">Envie seus arquivos aqui</label>
                     <input type="file" name="arquivo" class="form-control-file" id="arquivo" aria-describedby="enviodearquivos">
-                  </div>              
+                  </div> 
+                  <div class="form-group">
+                    <label for="message">Deixe seu comentário aqui</label>
+                    <textarea id="comment" name="comment" class="form-control" rows="5" placeholder="Digite sua mensagem..."></textarea>
+                  </div>                               
                   <button type="submit" class="btn btn-primary" id="envia_arquivos">Enviar</button>
               </form> 
             </div>         

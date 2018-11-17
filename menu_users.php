@@ -1,7 +1,7 @@
 <?php 
 include 'inc/header.php';
-require('classes/user.class.php'); 
-$user = NEW User(); 
+require 'classes/user.class.php';
+$user = NEW User();
 if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 ?>
 <!-- topo -->
@@ -18,10 +18,16 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <?php
-            if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
+            if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
             ?>
             <li class="nav-item">
               <a class="nav-link" href="logout.php" id="scrollSuave">Encerrar Sessão</a>
+            </li>
+            <?php
+            } else{
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="loginuser.php" id="scrollSuave">Área do Cliente</a>
             </li>
             <?php
             }
@@ -30,47 +36,46 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
         </div>
       </div>
     </nav>
-      <?php
-      
-      
-      $result = $user->getUsuarios();
-      ?>
+
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
-        
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Lista de usuários</li>
-          </ol>
-        </nav>
-      
-            <h3>Mensagem em tempo real com seus clientes</h3>
-            <div id="alert">
-            </div>
-        
-          <!-- table -->
-          <div class="row justify-content-center mt-4 mb-5">
-            <div class="col-md-6 ">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Menu de usuários</li>
+        </ol>
+      </nav>
+        <?php
+        $user = $user->getUsuarios();
+        ?>
+        <h6>Pesquisar Usuários</h6>
+        <form method="POST" id="form-pesquisa" class="form-group" >
+          <input type="text" name="pesquisa" id="pesquisa" class="form-control" placeholder="Digite o nome do usuário">
+        </form>
+            
+        <div class="row justify-content-center mt-4 mb-5">
+            <div class="col-md-12 ">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">id</th>
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">Mensagem</th>
-                        </tr>
+                        <th scope="col">Edição</th>
+                        <th scope="col">Exclusão</th>
+                        <th scope="col">Enviar - Receber</th>
                     </thead>
-                    <tbody>
+                    <tbody id = content>
                         <?php 
-                        foreach($result as $usuario){
+                        foreach($user as $dados){
                         $html = '
                         <tr>
-                        <th scope="row">'.$usuario['id_user'].'</th>
-                        <td>'.$usuario['nome'].'</td>
-                        <td>'.$usuario['email'].'</td>
-                        <td><a href="chat.php?id_para='. $usuario['id_user'].'" class="btn btn-info">Iniciar</a></td>
+                        <td>'.$dados['nome'].'</td>
+                        <td>'.$dados['email'].'</td>
+                        <td><button type="button" class="btn btn-secondary">Editar</button></td>
+                        <td><button type="button" class="btn btn-danger">Excluir</button></td>
+                        <td><button type="button" class="btn btn-primary">Arquivos</button></td>
                         </tr>';
                         echo $html;
                         }
@@ -80,8 +85,6 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
             </div> 
             </div>         
           </div>
-          
-                            
       </div>    
     </article>
 
@@ -96,6 +99,3 @@ require_once ('inc/footer.php');
     header("Location: index.php");
 }
 ?>
-
-
-

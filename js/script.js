@@ -235,3 +235,49 @@ $(function () {
 	});
 
 });
+
+//busca de usuarios sem refresh
+	$("#pesquisa").keyup(function(){
+			
+		var pesquisa = $(this).val();
+		
+		//Verificar se há algo digitado
+		if(pesquisa == ''){
+			var dados = {
+				palavra : pesquisa
+			}		
+			$.post('busca_users.php', dados, function(retorna){
+				//Mostra dentro da ul os resultado obtidos 
+				$("#content").html(retorna);
+			});
+		}		
+		if(pesquisa != ''){
+			var dados = {
+				palavra : pesquisa
+			}		
+			$.post('busca_users.php', dados, function(retorna){
+				//Mostra dentro da ul os resultado obtidos 
+				$("#content").html(retorna);
+			});
+		}else{
+			$("#content").html('');
+		}		
+	});
+
+	// função para checar mensagens visualizadas
+	
+	if (window.location.pathname == '/projetocomun/mensagens.php') {
+
+		$.ajax({
+			type: "POST",
+			url: "atualiza_status.php",
+			dataType: "json",
+			success: function (resultado) {
+				if (resultado.Status == 'OK') {
+					console.log("Status Atualizado");
+				} else {
+					console.log("Erro ao atualizar status");
+				}
+			}
+		});
+	}

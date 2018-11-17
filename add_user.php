@@ -34,9 +34,16 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
         </div>
       </div>
     </nav>   
-    <header class="mastheads text-center text-white d-flex">
+    <article class="mastheads text-center text-white d-flex">
       <div class="container my-auto">
-        <h2>Olá <?php echo $_SESSION['nome'];  ?> !</h2>
+      
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Adicionar Usuário</li>
+        </ol>
+      </nav>
+
         <div class="row justify-content-center mt-4 mb-2">
           <div class="col-lg-6 col-md-6">
             <div id="alert">
@@ -60,7 +67,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
           </div>
         </div>
       </div>
-    </header>
+    </article>
 </div>
 </footer>
 <div class="container-fluid bg-dark text-center text-white">

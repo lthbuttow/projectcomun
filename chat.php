@@ -7,6 +7,14 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSI
 <body>
     <div class="row justify-content-center" >
     <div class="col-md-6 mt-5">
+	
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
+		<li class="breadcrumb-item"><a href="chat_admin.php" style="color: #2c3e50;">Lista de Usuários</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Chat</li>
+		</ol>
+    </nav>
 		<h1 class="text-center">CHAT - SUPORTE</h1>
 		<div id="content">
 			<div id="lista">

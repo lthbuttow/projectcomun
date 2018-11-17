@@ -1,5 +1,7 @@
 <?php 
-include 'inc/header.php'; 
+include 'inc/header.php';
+require 'classes/arquivos.classes.php';
+$arquivo = NEW Arquivo();
 if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 ?>
 <!-- topo -->
@@ -56,16 +58,20 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <a href="#users_list"><i class="fas fa-4x fa-id-card text-orange mb-3 sr-icon-3"></i>
+              <a href="menu_users.php"><i class="fas fa-4x fa-id-card text-orange mb-3 sr-icon-3"></i>
               <h4 class="mb-3">Menu de Usuários</h4></a>
-              <p class="text-muted mb-0">Site preparado para ser acessado por todos tipos de dispositivos</p>
+              <?php 
+                $qtd_arquivos = $arquivo->getStatus();
+                $qtd_mensagem = $arquivo->getStatusMsg();
+              ?>
+              <p class="text-muted mb-0">Atualmente você tem <?php echo $qtd_arquivos; ?> arquivos que ainda não foram visualizados</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <a href="mensagens.php"><i class="fas fa-4x fa-envelope text-orange mb-3 sr-icon-4"></i>
               <h4 class="mb-3">Mensagens</h4></a>
-              <p class="text-muted mb-0">Verifique as mensagens recebidas em sua caixa de mensagens</p>
+              <p class="text-muted mb-0">Você tem <?php echo $qtd_mensagem; ?> mensagens recebidas</p>
             </div>
           </div>
         </div>

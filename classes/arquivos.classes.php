@@ -21,11 +21,12 @@ class Arquivo extends BD{
         }       
     }
 
-    public function addArquivo($id_de,$id_para,$link){
-        $sql = $this->pdo->prepare("INSERT INTO arquivos (id_de,id_para,link) VALUES (:id_de, :id_para, :link)");
+    public function addArquivo($id_de,$id_para,$link,$comentario){
+        $sql = $this->pdo->prepare("INSERT INTO arquivos (id_de,id_para,link,comentario) VALUES (:id_de, :id_para, :link, :comentario)");
         $sql->bindValue(":id_de", $id_de);
         $sql->bindValue(":id_para", $id_para);
         $sql->bindValue(":link", $link);
+        $sql->bindValue(":comentario", $comentario);
         
         if($sql->execute()){
 
@@ -33,6 +34,39 @@ class Arquivo extends BD{
         } else{
             return false;
         }   
+    }
+
+    public function getStatus(){
+		$sql = "SELECT * FROM arquivos WHERE chequed ='0'";
+		$sql = $this->pdo->query($sql);
+	
+		if($sql->execute()){
+
+		$result = $sql->rowCount();
+		
+		return $result;
+	} else{
+		return false;
+		}  
+    }
+    
+    public function getStatusMsg(){
+
+		$consulta = $this->pdo->query("SELECT * FROM contato WHERE chequed = '0'");
+		$consulta->execute();
+
+		$resultado = $consulta->rowCount();
+		return $resultado;
+    }
+    
+    public function atualizaStatus(){
+        $sql = $this->pdo->query("UPDATE contato SET chequed = '1' WHERE chequed = '0'");
+		if($sql->execute()){
+            
+            return true;
+        } else{
+            return false;
+            }  
     }
     
 }

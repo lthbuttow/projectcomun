@@ -83,5 +83,19 @@ class User extends BD{
 		return false;
 		}
 	}
+
+	public function consultaUsers($user){
+		$sql = $this->pdo->prepare("SELECT * FROM usuarios WHERE nome LIKE :user AND admin ='0'");
+		$sql->bindValue(":user", '%'.$user.'%');
+	
+		if($sql->execute()){
+
+		// $result = $sql->fetchAll();
+		
+		return $sql;
+	} else{
+		return false;
+		}
+	}
 }
 ?>

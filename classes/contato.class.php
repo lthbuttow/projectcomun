@@ -33,5 +33,14 @@ class Contato extends BD{
 	 	$resultado = $consulta->fetchAll();
 	 	return $resultado;
 	 }
+
+	 public function getStatusMsg(){
+
+		$consulta = $this->pdo->query("SELECT * FROM contato WHERE chequed = '0'");
+		$consulta->execute();
+
+		$resultado = $consulta->rowCount();
+		return $resultado;
+	}	 
 }
 ?>

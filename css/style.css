@@ -533,8 +533,9 @@ header.mastheadss a {
   width: 180px;
 }
 
-/* @media (min-width: 768px) {
-  .btam {
-    width: 160px;
-  }
-}  */
+.fundo{
+  padding-top: 10rem;
+  background-color: rgb(131, 66, 66);
+  height: 100vh;
+  width: 100vh;
+}
