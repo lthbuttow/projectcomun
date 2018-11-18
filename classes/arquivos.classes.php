@@ -21,6 +21,19 @@ class Arquivo extends BD{
         }       
     }
 
+    public function meusArquivos($id_para){
+        $sql = $this->pdo->prepare("SELECT * FROM arquivos WHERE id_para = :id_para");
+        $sql->bindValue(":id_para", $id_para);
+        
+        if($sql->execute()){
+
+            $resultado = $sql->fetchAll();
+            return $resultado;
+        } else{
+            return false;
+        }       
+    }
+
     public function addArquivo($id_de,$id_para,$link,$comentario){
         $sql = $this->pdo->prepare("INSERT INTO arquivos (id_de,id_para,link,comentario) VALUES (:id_de, :id_para, :link, :comentario)");
         $sql->bindValue(":id_de", $id_de);

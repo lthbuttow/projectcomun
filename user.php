@@ -62,6 +62,9 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
             <a class="btn btn-md btn-outline-success btam" id="envia_user"  role="button">ENVIAR ARQUIVOS</a>
           </div>
           <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
+            <a class="btn btn-md btn-outline-secondary btam" href="caixa_arquivos.php?id_user=<?php echo $_SESSION['id_user']; ?>"  role="button">RECEBIDOS</a>
+          </div>          
+          <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
             <a class="btn btn-md btn-outline-warning btam " id="chat_enviar" href="chat.php?id_para=<?php echo $result['id_user'];?>" role="button">SUPORTE</a>
           </div>          
         </div>

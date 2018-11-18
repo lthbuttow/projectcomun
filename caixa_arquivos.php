@@ -1,8 +1,7 @@
 <?php 
-include 'inc/header.php';
-require 'classes/user.class.php';
-$user = NEW User();
-if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
+include 'inc/header.php'; 
+if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
+    $id_para = $_GET['id_user'];
 ?>
 <!-- topo -->
 <body>
@@ -36,46 +35,34 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
         </div>
       </div>
     </nav>
-
+      <?php
+      require('classes/arquivos.classes.php');
+      $arquivo = NEW Arquivo(); 
+      $result = $arquivo->meusArquivos($id_para);
+      ?>
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
-
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Menu de usuários</li>
-        </ol>
-      </nav>
-        <?php
-        $user = $user->getUsuarios();
-        ?>
-        <h6>Pesquisar Usuários</h6>
-        <form method="POST" id="form-pesquisa" class="form-group" >
-          <input type="text" name="pesquisa" id="pesquisa" class="form-control" placeholder="Digite o nome do usuário">
-        </form>
-            
-        <div class="row justify-content-center mt-4 mb-5">
-            <div class="col-md-12 ">
+        <div class="row">
+        <div class="col-md-12 ">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Edição</th>
-                        <th scope="col">Exclusão</th>
-                        <th scope="col">Enviar - Receber</th>
+                        <th scope="col">Arquivo</th>
+                        <th scope="col">Comentario</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Opções</th>
+                        </tr>
                     </thead>
-                    <tbody id = content>
+                    <tbody>
                         <?php 
-                        foreach($user as $dados){
+                        foreach($result as $arquivo){
                         $html = '
                         <tr>
-                        <td>'.$dados['nome'].'</td>
-                        <td>'.$dados['email'].'</td>
-                        <td><button type="button" class="btn btn-secondary">Editar</button></td>
-                        <td><button type="button" class="btn btn-danger">Excluir</button></td>
-                        <td><a class="btn btn-primary" href="caixa_arquivos.php?id_user='.$dados['id_user'].'&id_para='.$_SESSION['id_user'].'">Arquivos</a></td>
+                        <th scope="row">'.$arquivo['link'].'</th>
+                        <td>'.$arquivo['comentario'].'</td>
+                        <td>'.$arquivo['dt_envio'].'</td>
+                        <td><a href="arquivos/'. $arquivo['link'].'" download class="btn btn-info">Iniciar</a></td>
                         </tr>';
                         echo $html;
                         }
@@ -85,7 +72,8 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
             </div> 
             </div>         
           </div>
-      </div>    
+        </div>
+        </div>       
     </article>
 
 </div>
@@ -99,3 +87,6 @@ require_once ('inc/footer.php');
     header("Location: index.php");
 }
 ?>
+
+
+
