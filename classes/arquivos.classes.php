@@ -33,6 +33,20 @@ class Arquivo extends BD{
             return false;
         }       
     }
+    
+    public function meusArquivosAdmin($id_de,$id_para){
+        $sql = $this->pdo->prepare("SELECT * FROM arquivos WHERE id_de = :id_de AND  id_para = :id_para");
+        $sql->bindValue(":id_de", $id_de);
+        $sql->bindValue(":id_para", $id_para);
+        
+        if($sql->execute()){
+
+            $resultado = $sql->fetchAll();
+            return $resultado;
+        } else{
+            return false;
+        }       
+    }    
 
     public function addArquivo($id_de,$id_para,$link,$comentario){
         $sql = $this->pdo->prepare("INSERT INTO arquivos (id_de,id_para,link,comentario) VALUES (:id_de, :id_para, :link, :comentario)");

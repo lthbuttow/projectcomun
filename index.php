@@ -21,13 +21,16 @@ include 'inc/header.php';
             </li>
             <li class="nav-item">
               <a class="nav-link" href="loginuser.php" id="scrollSuave">Área do Cliente</a>
-            </li>
+            </li>           
             <?php
-            if (isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm'])) {
+            if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
             ?>
             <li class="nav-item">
+              <a class="nav-link" href="admin.php" id="scrollSuave">Painel Administrador</a>
+            </li>            
+            <li class="nav-item">
               <a class="nav-link" href="logout.php" id="scrollSuave">Encerrar Sessão</a>
-            </li>
+            </li>            
             <?php
             } else{
             ?>

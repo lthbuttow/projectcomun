@@ -42,6 +42,12 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
       ?>
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="user.php" style="color: #2c3e50;">Painel do Usuário</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Arquivos Recebidos</li>
+            </ol>
+          </nav>	
         <div class="row">
         <div class="col-md-12 ">
             <div class="table-responsive">
@@ -62,7 +68,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                         <th scope="row">'.$arquivo['link'].'</th>
                         <td>'.$arquivo['comentario'].'</td>
                         <td>'.$arquivo['dt_envio'].'</td>
-                        <td><a href="arquivos/'. $arquivo['link'].'" download class="btn btn-info">Iniciar</a></td>
+                        <td><a href="arquivos/'. $arquivo['link'].'" download class="btn btn-info">Baixar</a></td>
                         </tr>';
                         echo $html;
                         }

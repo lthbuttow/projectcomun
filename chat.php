@@ -7,7 +7,9 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSI
 <body>
     <div class="row justify-content-center" >
     <div class="col-md-6 mt-5">
-	
+	<?php 
+	if (isset($_SESSION['admin']) && !empty($_SESSION['admin']) ) {
+	?>	
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
@@ -15,6 +17,18 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSI
 		<li class="breadcrumb-item active" aria-current="page">Chat</li>
 		</ol>
     </nav>
+	<?php 
+	} else{
+	?>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="user.php" style="color: #2c3e50;">Painel do Usuário</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Chat</li>
+		</ol>
+    </nav>	
+	<?php
+	}
+	?>
 		<h1 class="text-center">CHAT - SUPORTE</h1>
 		<div id="content">
 			<div id="lista">
