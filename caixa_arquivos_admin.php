@@ -43,8 +43,30 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
       ?>
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
+      <?php 
+    	if (isset($_SESSION['mensagem'])) {
+    		echo $_SESSION['mensagem'];
+    		unset($_SESSION['mensagem']);
+    	}
+    	?>   
         <div class="row">
         <div class="col-md-12 ">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
+            <li class="breadcrumb-item"><a href="menu_users.php" style="color: #2c3e50;">Menu de Usuários</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Lista de Arquivos</li>
+          </ol>
+        </nav>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12 ">
+        <div class="row">
+            <div class="col-md-12 text-left mb-1">
+              <a class="btn btn-success" href="envia.php?id_user=<?php echo $id_de; ?>" role="button">ENVIAR ARQUIVO</a>
+            </div>
+        </div>                
             <div class="table-responsive">
                 <table class="table">
                     <thead>

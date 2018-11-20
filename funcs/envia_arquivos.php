@@ -35,7 +35,11 @@ if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
 					<span aria-hidden="true">&times;</span>
 				</button>
 				</div>';
-				header("Location: ../user.php");
+				if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
+					header("Location: ../caixa_arquivos_admin.php?id_user=$id_para");
+				} else{
+					header("Location: ../user.php");
+				}
 			} else{
 				$_SESSION['mensagem'] = '
 				<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -66,7 +70,11 @@ if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
 					<span aria-hidden="true">&times;</span>
 				</button>
 				</div>';
-				header("Location: ../user.php");
+				if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
+					header("Location: ../caixa_arquivos_admin.php?id_user=$id_para");
+				} else{
+					header("Location: ../user.php");
+				}
 			} else{
 				$_SESSION['mensagem'] = '
 				<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -75,7 +83,11 @@ if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
 					<span aria-hidden="true">&times;</span>
 				</button>
 				</div>';
-				header("Location: ../user.php");				
+				if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
+					header("Location: ../caixa_arquivos_admin.php?id_user=$id_para");
+				} else{
+					header("Location: ../user.php");
+				}				
 			}
 		
 		}		
@@ -87,7 +99,11 @@ if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
 				<span aria-hidden="true">&times;</span>
 			</button>
 			</div>';
-			header("Location: ../user.php");
+			if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
+				header("Location: ../caixa_arquivos_admin.php?id_user=$id_para");
+			} else{
+				header("Location: ../user.php");
+			}
 		}
 	}
 
@@ -99,6 +115,10 @@ if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
 		<span aria-hidden="true">&times;</span>
 	</button>
 	</div>';
-	header("Location: ../user.php");
+	if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
+		header("Location: ../caixa_arquivos_admin.php?id_user=$id_para");
+	} else{
+		header("Location: ../user.php");
+	}
 }
 ?>

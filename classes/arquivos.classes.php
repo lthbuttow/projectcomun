@@ -64,7 +64,7 @@ class Arquivo extends BD{
     }
 
     public function getStatus(){
-		$sql = "SELECT * FROM arquivos WHERE chequed ='0'";
+		$sql = "SELECT * FROM arquivos WHERE chequed ='0' AND id_para = '1'";
 		$sql = $this->pdo->query($sql);
 	
 		if($sql->execute()){
