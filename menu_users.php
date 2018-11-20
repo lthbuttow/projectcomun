@@ -53,7 +53,13 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
         <form method="POST" id="form-pesquisa" class="form-group" >
           <input type="text" name="pesquisa" id="pesquisa" class="form-control" placeholder="Digite o nome do usuário">
         </form>
-            
+
+        <div class="row">
+            <div class="col-md-12 text-left">
+              <a class="btn btn-primary" href="add_user.php" role="button">ADICIONAR USUÁRIO</a>
+            </div>
+        </div>
+
         <div class="row justify-content-center mt-4 mb-5">
             <div class="col-md-12 ">
             <div class="table-responsive">
