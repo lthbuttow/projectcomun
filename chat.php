@@ -13,7 +13,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSI
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
-		<li class="breadcrumb-item"><a href="chat_admin.php" style="color: #2c3e50;">Menu de Usuários</a></li>
+		<li class="breadcrumb-item"><a href="menu_users.php" style="color: #2c3e50;">Menu de Usuários</a></li>
 		<li class="breadcrumb-item active" aria-current="page">Chat</li>
 		</ol>
     </nav>

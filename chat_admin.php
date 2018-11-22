@@ -30,10 +30,20 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
         </div>
       </div>
     </nav>
-      <?php
-      $qt_por_pag = 6;
+      <?php      
+      $total_users = $user->getTotalUsuarios();
+      $total_users = $total_users['contagem'];
+      $qt_por_pag = 2;
+      $paginas = $total_users / $qt_por_pag;
       
-      $result = $user->getUsuarios();
+      $pg = 1;
+      if(isset($_GET['p']) && !empty($_GET['p'])){
+        $pg = $_GET['p'];
+      }
+
+      $p = ($pg-1) * $qt_por_pag;
+
+      $result = $user->getUsuariosPagination($p,$qt_por_pag);
       ?>
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
@@ -78,10 +88,17 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
                     </tbody>
                 </table>
             </div> 
-            </div>         
-          </div>
-          
-                            
+            </div>
+            <?php
+          echo '<ul class="pagination justify-content-center mb-4>';
+          for($q=0; $q<$paginas; $q++){
+          $paginacao = '  
+               <li class="page-item"><a class="page-link" style="color: #2c3e50;" href="chat_admin.php?p='.($q+1).'">'.($q+1).'</a></li>';
+          echo $paginacao;
+          }
+          echo '</ul>';
+          ?>                    
+          </div>        
       </div>    
     </article>
 

@@ -47,7 +47,21 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
         </ol>
       </nav>
         <?php
-        $user = $user->getUsuarios();
+        $total_users = $user->getTotalUsuarios();
+        $total_users = $total_users['contagem'];
+        $qt_por_pag = 5;
+        $paginas = $total_users / $qt_por_pag;
+        
+        $pg = 1;
+        if(isset($_GET['p']) && !empty($_GET['p'])){
+          $pg = $_GET['p'];
+        }
+
+        $p = ($pg-1) * $qt_por_pag;
+
+        $result = $user->getUsuariosPagination($p,$qt_por_pag);
+        $_SESSION['p'] = $p;
+        $_SESSION['qt_por_pag'] = $qt_por_pag;
         ?>
         <h6>Pesquisar Usuários</h6>
         <form method="POST" id="form-pesquisa" class="form-group" >
@@ -75,7 +89,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
                     </thead>
                     <tbody id = content>
                         <?php 
-                        foreach($user as $dados){
+                        foreach($result as $dados){
                         $html = '
                         <tr>
                         <td>'.$dados['nome'].'</td>
@@ -91,7 +105,16 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
                     </tbody>
                 </table>
             </div> 
-            </div>         
+            </div>
+          <?php
+          echo '<ul class="pagination justify-content-center mb-4>';
+          for($q=0; $q<$paginas; $q++){
+          $paginacao = '  
+               <li class="page-item"><a class="page-link" style="color: #2c3e50;" href="menu_users.php?p='.($q+1).'">'.($q+1).'</a></li>';
+          echo $paginacao;
+          }
+          echo '</ul>';
+          ?>                      
           </div>
       </div>    
     </article>

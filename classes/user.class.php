@@ -84,13 +84,27 @@ class User extends BD{
 		}
 	}
 
-	public function getTotalUsuarios(){
-		$sql = "SELECT * FROM usuarios WHERE admin ='0'";
+	public function getUsuariosPagination($p,$qt_por_pag){
+		$sql = "SELECT * FROM usuarios WHERE admin ='0' LIMIT $qt_por_pag OFFSET $p";
 		$sql = $this->pdo->query($sql);
 	
 		if($sql->execute()){
 
 		$result = $sql->fetchAll();
+		
+		return $result;
+	} else{
+		return false;
+		}
+	}	
+
+	public function getTotalUsuarios(){
+		$sql = "SELECT COUNT (id_user) as contagem FROM usuarios WHERE admin ='0'";
+		$sql = $this->pdo->query($sql);
+	
+		if($sql->execute()){
+
+		$result = $sql->fetch();
 		
 		return $result;
 	} else{
