@@ -234,7 +234,7 @@ $(function () {
 
 	});
 
-});
+
 
 //busca de usuarios sem refresh
 	$("#pesquisa").keyup(function(){
@@ -281,3 +281,31 @@ $(function () {
 			}
 		});
 	}
+
+	// função para checar arquivos visualizados
+	
+	$('.acessa').bind('click',function(e){
+
+		e.preventDefault();
+		var teste = $(this).attr("href");
+		var repartido = teste.split('=');
+		var id = repartido[1];
+
+		console.log(id);
+
+		$.ajax({
+			type: "POST",
+			url: "atualiza_arquivos.php",
+			data:{ id_user : id },
+			dataType: "json",
+			success: function (resultado) {
+				if (resultado.Status == 'OK') {
+					console.log("Status Atualizado");
+				} else {
+					console.log("Erro ao atualizar status");
+				}
+			}
+		});
+		$(location).attr('href', 'caixa_arquivos_admin.php?id_user='+id);
+	});	
+});

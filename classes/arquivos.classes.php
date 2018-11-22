@@ -95,6 +95,17 @@ class Arquivo extends BD{
             return false;
             }  
     }
+
+    public function atualizaArquivos($id_de){
+        $sql = $this->pdo->prepare("UPDATE arquivos SET chequed = '1' WHERE id_de = :id_de");
+        $sql->bindValue(":id_de", $id_de);
+		if($sql->execute()){
+            
+            return true;
+        } else{
+            return false;
+            }  
+    }    
     
 }
 ?>

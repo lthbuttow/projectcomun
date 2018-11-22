@@ -447,28 +447,7 @@ header.mastheadss a {
   overflow: scroll;
   }
 }
-/* modal */
-.modal_bg {
-	position:fixed;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	z-index:99;
-	background-color:rgba(0, 0, 0, 0.6);
-	display:none;
-}
-.modal_base {
-	position:absolute;
-	width:500px;
-	height:400px;
-	background-color:#FFFFFF;
-	z-index:100;
-	top:50px;
-  left:50%;
-  border-radius: 5px;
-	margin-left:-250px;
-}
+
 /* chat */
 .chat-i{
 	border-radius: 8px;
@@ -497,36 +476,6 @@ header.mastheadss a {
 #lista{
   height: 45vh;
   overflow: scroll;
-}
-
-/* Scroll Personalizado */
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  -webkit-border-radius: 16px;
-  display: none;
-}
-
-::-webkit-scrollbar-track-piece {
-  background-color: #ffffff;
-  -webkit-border-radius: 3px;
-  display: none;
-}
-
-::-webkit-scrollbar-thumb:vertical {
-  height: 5px;
-  background-color: #bbb;
-  /* border: 1px solid #f4511e; */
-  -webkit-border-radius: 3px;
-  display: none;
-}
-
-::-webkit-scrollbar-thumb:horizontal {
-  width: 5px;
-  background-color: #f4511e;
-  -webkit-border-radius: 3px;
-  display: none;
 }
 
  .btam {

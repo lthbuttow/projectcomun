@@ -31,7 +31,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
       </div>
     </nav>
       <?php
-      
+      $qt_por_pag = 6;
       
       $result = $user->getUsuarios();
       ?>

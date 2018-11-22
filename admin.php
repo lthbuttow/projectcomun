@@ -41,14 +41,14 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
       <div class="container my-auto">
         <h2>Olá <?php echo $_SESSION['nome'];  ?> !</h2>
         <div class="row">
-          <div class="col-lg-4 col-md-6 text-center">
+          <!-- <div class="col-lg-4 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <a href="chat_admin.php"><i class="fas fa-4x fa-comment-dots text-orange mb-3 sr-icon-2"></i>
               <h4 class="mb-3">Iniciar Chat</h4></a>
               <p class="text-muted mb-0">Uma opção de conversa em tempo real!</p>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-6 text-center">
+          </div> -->
+          <div class="col-lg-6 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <a href="menu_users.php"><i class="fas fa-4x fa-id-card text-orange mb-3 sr-icon-3"></i>
               <h4 class="mb-3">Menu de Usuários</h4></a>
@@ -59,7 +59,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
               <p class="text-muted mb-0">Atualmente você tem <?php echo $qtd_arquivos; ?> arquivos que ainda não foram visualizados</p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 text-center">
+          <div class="col-lg-6 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <a href="mensagens.php"><i class="fas fa-4x fa-envelope text-orange mb-3 sr-icon-4"></i>
               <h4 class="mb-3">Mensagens</h4></a>

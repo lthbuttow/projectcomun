@@ -16,7 +16,7 @@ include 'inc/header.php';
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" name="senha" id="inputPassword" class="form-control" placeholder="Digite sua senha..." required>
       <button class="btn btn-lg btdark btn-block" type="submit">Entrar</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+      <p class="mt-5 mb-3 text-muted">Lucas Büttow&copy; 2018</p>
     </form>    
 <?php  
 include 'inc/footer.php';

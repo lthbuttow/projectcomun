@@ -19,7 +19,7 @@
 			<td>'.$dados['email'].'</td>
 			<td><button type="button" class="btn btn-secondary">Editar</button></td>
 			<td><button type="button" class="btn btn-danger">Excluir</button></td>
-			<td><button type="button" class="btn btn-primary">Arquivos</button></td>
+			<td><a class="btn btn-primary" href="caixa_arquivos_admin.php?id_user='.$dados['id_user'].'">Arquivos</a></td>
 			</tr>';
 			echo $html;
 			}		
@@ -39,7 +39,7 @@
 			<td>'.$dados['email'].'</td>
 			<td><button type="button" class="btn btn-secondary">Editar</button></td>
 			<td><button type="button" class="btn btn-danger">Excluir</button></td>
-			<td><button type="button" class="btn btn-primary">Arquivos</button></td>
+			<td><a class="btn btn-primary" href="caixa_arquivos_admin.php?id_user='.$dados['id_user'].'">Arquivos</a></td>
 			</tr>';
 			echo $html;
 			}
