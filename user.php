@@ -1,5 +1,5 @@
 <?php 
-include 'inc/header.php'; 
+include 'assets/hf/header.php'; 
 if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
 ?>
 <!-- topo -->
@@ -35,7 +35,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
       </div>
     </nav>
       <?php
-      require('classes/admin.class.php');
+      require 'classes/admin.class.php';
       $admin = NEW Admin(); 
       $result = $admin->getAdmin();
       ?>
@@ -105,12 +105,6 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
               </form> 
             </div>         
           </div> 
-          <!-- chat-->
-          <!-- <div class="row justify-content-center mt-4 mb-5" id="chat">
-            <div class="col-md-6">
-            
-            </div>
-          </div>                              -->
       </div>    
     </article>
 
@@ -120,7 +114,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
 </div>
 
 <?php  
-require_once ('inc/footer.php');
+require 'assets/hf/footer.php';
 } else{
     header("Location: index.php");
 }

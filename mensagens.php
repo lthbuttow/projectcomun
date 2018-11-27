@@ -1,5 +1,5 @@
 <?php 
-include 'inc/header.php';
+include 'assets/hf/header.php';
 require 'classes/contato.class.php';
 $contato = NEW Contato();
 if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
@@ -85,7 +85,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
 </div>
 
 <?php  
-require_once ('inc/footer.php');
+require 'assets/hf/footer.php';
 } else{
     header("Location: index.php");
 }

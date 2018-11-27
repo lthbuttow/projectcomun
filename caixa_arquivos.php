@@ -1,5 +1,5 @@
 <?php 
-include 'inc/header.php'; 
+include 'assets/hf/header.php'; 
 if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
     $id_para = $_GET['id_user'];
 ?>
@@ -36,7 +36,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
       </div>
     </nav>
       <?php
-      require('classes/arquivos.classes.php');
+      require 'classes/arquivos.class.php';
       $arquivo = NEW Arquivo(); 
       $result = $arquivo->meusArquivos($id_para);
       ?>
@@ -88,7 +88,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
 </div>
 
 <?php  
-require_once ('inc/footer.php');
+require_once ('assets/hf/footer.php');
 } else{
     header("Location: index.php");
 }

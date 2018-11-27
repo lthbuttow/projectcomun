@@ -1,5 +1,5 @@
 <?php 
-include 'inc/header.php';
+include 'assets/hf/header.php';
 require 'classes/user.class.php';
 $user = NEW User();
 if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
@@ -37,15 +37,21 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
       </div>
     </nav>
 
-    <article class="mastheads article text-center text-white d-flex">
-      <div class="container my-auto">
+</div>
 
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Menu de usuários</li>
-        </ol>
-      </nav>
+    <article class="mastheader article text-center text-white d-flex">
+      <div class="container my-auto">
+      
+      <div class="row">
+        <div class="col-md-12 text-left">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Menu de usuários</li>
+            </ol>
+          </nav>
+        </div>
+      </div>    
         <?php
         $total_users = $user->getTotalUsuarios();
         $total_users = $total_users['contagem'];
@@ -119,13 +125,12 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
       </div>    
     </article>
 
-</div>
 <div class="container-fluid bg-dark text-center text-white">
   <p class="pb-2 mb-0 pt-2">Desenvolvido por Lucas Büttow <i class="fas fa-copyright"></i></p>
 </div>
 
 <?php  
-require_once ('inc/footer.php');
+require 'assets/hf/footer.php';
 } else{
     header("Location: index.php");
 }

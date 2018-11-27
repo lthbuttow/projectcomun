@@ -1,5 +1,5 @@
 <?php 
-include 'inc/header.php'; 
+include 'assets/hf/header.php'; 
 ?>
 <body class="form">
     <form method="POST" action="funcs/loga_adm.php" class="form-signin text-center">
@@ -9,7 +9,7 @@ include 'inc/header.php';
     		unset($_SESSION['mensagem']);
     	}
     	?>
-      <img class="mb-3" src="img/gerente.png" alt="" width="72" height="72">
+      <img class="mb-3" src="assets/img/gerente.png" alt="" width="72" height="72">
       <h3 class="h3 text-center font-weight-normal mb-4">FAÇA SEU LOGIN</h3>
       <label for="inputEmail" class="sr-only">Email</label>
       <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Digite seu e-mail..." required autofocus>
@@ -19,5 +19,5 @@ include 'inc/header.php';
       <p class="mt-5 mb-3 text-muted">Lucas Büttow&copy; 2018</p>
     </form>    
 <?php  
-include 'inc/footer.php';
+include 'assets/hf/footer.php';
 ?>

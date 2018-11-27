@@ -1,5 +1,5 @@
 <?php 
-include 'inc/header.php'; 
+include 'assets/hf/header.php'; 
 if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 ?>
 <!-- topo -->
@@ -75,7 +75,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 </div>
 
 <?php  
-include 'inc/footer.php';
+include 'assets/hf/footer.php';
 } else{
     header("Location: index.php");
 }

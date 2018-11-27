@@ -1,5 +1,7 @@
 <?php 
-include 'inc/header.php'; 
+include 'assets/hf/header.php';
+include 'classes/arquivos.class.php';
+$arquivo = NEW Arquivo();  
 if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
     $id_de = $_GET['id_user'];
     $id_para = $_SESSION['id_user'];
@@ -37,9 +39,17 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
       </div>
     </nav>
       <?php
-      require('classes/arquivos.classes.php');
-      $arquivo = NEW Arquivo(); 
-      $result = $arquivo->meusArquivosAdmin($id_de,$id_para);
+      $total_arquivos = $arquivo->getTotalArquivos();
+      $total_arquivos = $total_arquivos['contagem'];
+      $qt_por_pag = 4;
+      $paginas = $total_arquivos / $qt_por_pag;
+      $pg = 1;
+      if(isset($_GET['p']) && !empty($_GET['p'])){
+        $pg = $_GET['p'];
+      }
+
+      $p = ($pg-1) * $qt_por_pag;      
+      $result = $arquivo->meusArquivosAdminPag($id_de,$id_para,$p,$qt_por_pag);
       ?>
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
@@ -93,7 +103,16 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                     </tbody>
                 </table>
             </div> 
-            </div>         
+            </div>
+            <?php
+              echo '<ul class="pagination justify-content-center mb-4>';
+              for($q=0; $q<$paginas; $q++){
+              $paginacao = '  
+                  <li class="page-item"><a class="page-link" style="color: #2c3e50;" href="caixa_arquivos_admin.php?id_user='.$id_de.'&p='.($q+1).'">'.($q+1).'</a></li>';
+              echo $paginacao;
+              }
+              echo '</ul>';
+            ?>          
           </div>
         </div>
         </div>       
@@ -105,7 +124,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
 </div>
 
 <?php  
-require_once ('inc/footer.php');
+require 'assets/hf/footer.php';
 } else{
     header("Location: index.php");
 }

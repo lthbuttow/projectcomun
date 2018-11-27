@@ -1,6 +1,6 @@
 <?php 
-include 'inc/header.php';
-require('classes/user.class.php'); 
+include 'assets/hf/header.php';
+require 'classes/user.class.php'; 
 $user = NEW User(); 
 if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 ?>
@@ -108,7 +108,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 </div>
 
 <?php  
-require_once ('inc/footer.php');
+require 'assets/hf/footer.php';
 } else{
     header("Location: index.php");
 }

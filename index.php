@@ -1,5 +1,5 @@
 <?php 
-include 'inc/header.php'; 
+include 'assets/hf/header.php'; 
 ?>
 <!-- topo -->
 <body>
@@ -7,7 +7,7 @@ include 'inc/header.php';
 	
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="index.php">Comun.</a>
+        <a class="navbar-brand" href="#main">Comun.</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,7 +45,7 @@ include 'inc/header.php';
       </div>
     </nav>   
 
-    <header class="masthead text-center text-white d-flex">
+    <header class="masthead text-center text-white d-flex" id="main">
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
@@ -147,5 +147,5 @@ include 'inc/header.php';
 </div>
 
 <?php  
-include 'inc/footer.php';
+include 'assets/hf/footer.php';
 ?>

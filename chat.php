@@ -1,10 +1,10 @@
 <?php 
-include 'inc/header.php';
-if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSION['id_adm']) && !empty($_SESSION['id_adm']) ) {
+include 'assets/hf/header.php';
+if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSION['admin']) && !empty($_SESSION['admin']) ) {
 	$_SESSION['id_para'] = $_GET['id_para'];
 ?>
 <!-- topo -->
-<body>
+<body class="over">
     <div class="row justify-content-center" >
     <div class="col-md-6 mt-5">
 	<?php 
@@ -48,7 +48,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) || isset($_SESSI
 	</div>
 </body>	
 <?php  
- include_once ('inc/footer.php');
+ include 'assets/hf/footer.php';
 } else{
     header("Location: index.php");
 }

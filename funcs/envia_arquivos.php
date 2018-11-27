@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../classes/arquivos.classes.php';
+require '../classes/arquivos.class.php';
 $arquivo = NEW Arquivo();
 
 if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {

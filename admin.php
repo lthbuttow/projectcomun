@@ -1,6 +1,6 @@
 <?php 
-include 'inc/header.php';
-require 'classes/arquivos.classes.php';
+include 'assets/hf/header.php';
+require 'classes/arquivos.class.php';
 $arquivo = NEW Arquivo();
 if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 ?>
@@ -76,7 +76,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 </div>
 
 <?php  
-include 'inc/footer.php';
+include 'assets/hf/footer.php';
 } else{
     header("Location: index.php");
 }
