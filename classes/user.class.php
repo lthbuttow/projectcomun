@@ -69,9 +69,22 @@ class User extends BD{
 		return false;
 		}
 	}
+
+	public function excluir($id_user){
+		$sql = "DELETE FROM usuarios WHERE id_user = :id_user";
+		$sql = $this->pdo->prepare($sql);
+		$sql->bindValue(':id_user', $id_user);
+		
+		if($sql->execute()){
+		
+		return true;
+	} else{
+		return false;
+		}
+	}	
 	
 	public function getUsuarios(){
-		$sql = "SELECT * FROM usuarios WHERE admin ='0'";
+		$sql = "SELECT * FROM usuarios WHERE admin ='0' ORDER BY id_user desc";
 		$sql = $this->pdo->query($sql);
 	
 		if($sql->execute()){
@@ -85,7 +98,7 @@ class User extends BD{
 	}
 
 	public function getUsuariosPagination($p,$qt_por_pag){
-		$sql = "SELECT * FROM usuarios WHERE admin ='0' LIMIT $qt_por_pag OFFSET $p";
+		$sql = "(SELECT * FROM usuarios WHERE admin ='0' LIMIT $qt_por_pag OFFSET $p) ORDER BY id_user";
 		$sql = $this->pdo->query($sql);
 	
 		if($sql->execute()){

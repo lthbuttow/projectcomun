@@ -90,13 +90,13 @@ include 'assets/hf/header.php';
             <div class="row">
                 <div class="form-group col-sm-12">
                     <label for="email" class="h4">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Digite seu email..." required>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu email..." data-toggle="tooltip" data-placement="top" title="Digite seu email como o exemplo xxxxxx@yyyyy.com" required>
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="message" class="h4 ">Mensagem</label>
-                <textarea id="message" class="form-control" rows="5" placeholder="Digite sua mensagem..." required></textarea>
+                <textarea id="message" class="form-control" rows="5" placeholder="Digite sua mensagem..." data-toggle="tooltip" data-placement="top" title="Seja direto, vai nos ajudar a tirar a sua dúvida!" required></textarea>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="text-center padding mt-4">

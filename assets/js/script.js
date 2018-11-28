@@ -12,11 +12,14 @@ function atualizar() {
 			alert("Ocorreu um erro");
 		}
 	});
+
+	$('div #lista').scrollTop(9999);
 }
 
 
-$(function () {
 
+$(function () {
+	
 	// mudança de cor da barra
 	$(window).bind('scroll', function () {
 
@@ -89,7 +92,7 @@ $(function () {
 				}
 			});
 		} else {
-			$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível enviar sua mensagem,revise seus dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível enviar sua mensagem, pelo menos um campo não foi preenchido!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 		}
 		$('#email').val("");
 		$('#message').val("");
@@ -205,6 +208,8 @@ $(function () {
 		});
 	});
 
+	// scroll do chat
+
 	// setInterval("atualizar()", 3000);
 	console.log(window.location.pathname);
 	if (window.location.pathname == '/projetocomun/chat.php') {
@@ -304,5 +309,68 @@ $(function () {
 			}
 		});
 		$(location).attr('href', 'caixa_arquivos_admin.php?id_user='+id);
+	});
+	
+	// bloqueio do botão de envio de arquivos
+
+	$("#arquivo").change(function(){
+		$("#envia_arquivos").attr("disabled", false);
+	});
+
+
+	$(".excluir").bind('click', function(e){
+
+		e.preventDefault();
+		var teste = $(this).attr("href");
+		var repartido = teste.split('=');
+		var id_user = repartido[1];
+
+		$.ajax({
+			type: 'POST',
+			url: 'funcs/exclui_user.php',
+			data: {id_user:id_user},
+			dataType: 'json',
+			success: function (html) {
+				bootbox.confirm({
+					message:'Você realmente deseja excluir esse usuário?',
+					callback: function(confirmacao){
+				  
+					  if (confirmacao)
+						bootbox.alert('Usuário excluído com sucesso.');
+					  else
+						bootbox.alert('Operação cancelada.');
+					
+					},
+					buttons: {
+					  cancel: {label: 'Cancelar',className:'btn-default'},
+					  confirm: {label: 'Excluir',className:'btn-danger'}
+					  
+					}
+				  });
+			},
+			error: function () {
+				alert("Ocorreu um erro");
+			}
+		});
+	
 	});	
+
+	// $(".excluir").bind('click', function(){
+	// 	confirmacao();
+	// });
+
+	// $('.excluir').click(												
+	// 	function(e) {
+	// 	e.preventDefault();
+	// 	var object = $(this).attr('data-object');					
+	// 	var location = $(this).attr('href');
+	// 	bootbox.confirm("<div align='center' class='mbaixo2 mTop2'>Deseja apagar o registro "+object+"?<br />Esta operação não poderá ser desfeita!</div>", function(confirmed) {
+	// 		if(confirmed) {
+	// 	window.location.replace(location);
+	// 	}
+	// 		});
+	// 	});			
+	  
+
 });
+

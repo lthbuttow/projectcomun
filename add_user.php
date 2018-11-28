@@ -40,6 +40,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
+          <li class="breadcrumb-item"><a href="menu_users.php" style="color: #2c3e50;">Menu de Usuários</a></li>
           <li class="breadcrumb-item active" aria-current="page">Adicionar Usuário</li>
         </ol>
       </nav>
@@ -77,7 +78,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 <?php  
 include 'assets/hf/footer.php';
 } else{
-    header("Location: index.php");
+    header("Location: menu_users.php");
 }
 ?>
 

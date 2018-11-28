@@ -53,19 +53,19 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
         </div>
             <div id="alert">
             </div>
-        <h2 class="mb-4 nm_user">Olá <?php echo $_SESSION['nome_user'];  ?> !</h2>
+        <h3 class="mb-4 nm_user">Olá <?php echo $_SESSION['nome_user'];  ?> !</h3>
         <div class="row justify-content-center">
           <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
-            <a class="btn btn-md btn-outline-info btam" id="edita_user" role="button">ALTERAR DADOS</a>
+            <a class="btn btn-md btn-outline-info btam" id="edita_user" role="button" data-toggle="tooltip" data-placement="top" title="atualize suas informações, como e-mail e nome" ><span class="fas fa-user-edit" style="margin-right:.2em;"></span>ALTERAR DADOS</a>
           </div>
           <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
-            <a class="btn btn-md btn-outline-success btam" id="envia_user"  role="button">ENVIAR ARQUIVOS</a>
+            <a class="btn btn-md btn-outline-success btam" id="envia_user"  role="button" data-toggle="tooltip" data-placement="top" title="Envie seus arquivos"><span class="fas fa-upload" style="margin-right:.2em;"></span>ARQUIVOS</a>
           </div>
           <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
-            <a class="btn btn-md btn-outline-secondary btam" href="caixa_arquivos.php?id_user=<?php echo $_SESSION['id_user']; ?>"  role="button">RECEBIDOS</a>
+            <a class="btn btn-md btn-outline-secondary btam" href="caixa_arquivos.php?id_user=<?php echo $_SESSION['id_user']; ?>"  role="button" data-toggle="tooltip" data-placement="top" title="Verifique aqui novos arquivos recebidos"><span class="fas fa-download" style="margin-right:.2em;"></span>RECEBIDOS</a>
           </div>          
           <div class="col-md-4 col-sm-4 col-xl-2 mt-2">
-            <a class="btn btn-md btn-outline-warning btam " id="chat_enviar" href="chat.php?id_para=<?php echo $result['id_user'];?>" role="button">SUPORTE</a>
+            <a class="btn btn-md btn-outline-warning btam " id="chat_enviar" href="chat.php?id_para=<?php echo $result['id_user'];?>" role="button" data-toggle="tooltip" data-placement="top" title="Tire suas dúvidas com um operador em tempo real"><span class="fas fa-headset" style="margin-right:.2em;"></span>SUPORTE</a>
           </div>          
         </div>
           <!-- editar dados -->
@@ -79,11 +79,11 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                 </div>              
                 <div class="form-group">
                   <label for="email">E-mail </label>
-                  <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite o E-mail">
+                  <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite o E-mail" required>
                 </div>
                 <div class="form-group">
                   <label for="senha">Senha</label>
-                  <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite a senha...">
+                  <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite a senha..." required>
                 </div>
                 <button type="submit" class="btn btn-info" id="envia_alter">Enviar</button>
               </form> 
@@ -101,7 +101,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                     <label for="message">Deixe seu comentário aqui</label>
                     <textarea id="comment" name="comment" class="form-control" rows="5" placeholder="Digite sua mensagem..."></textarea>
                   </div>                               
-                  <button type="submit" class="btn btn-primary" id="envia_arquivos">Enviar</button>
+                  <button type="submit" class="btn btn-primary" id="envia_arquivos" disabled="true">Enviar</button>
               </form> 
             </div>         
           </div> 
@@ -119,6 +119,5 @@ require 'assets/hf/footer.php';
     header("Location: index.php");
 }
 ?>
-
 
 
