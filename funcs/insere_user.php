@@ -21,7 +21,7 @@ $resultado = $admin->insereUser($nome,$email,$senha);
 	
 	if ($resultado == true) {
 	
-	$array = array('Status' => 'OK' );
+	$array = array('Status' => 'ok' );
 	
 	} else {
 

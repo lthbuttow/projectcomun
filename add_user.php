@@ -50,20 +50,20 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
             <div id="alert">
             
             </div>
-            <form method="POST">
+            <form id="add_user">
               <div class="form-group">
-                <label for="exampleInputEmail1">Nome</label>
-                <input type="text" name="nome" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Digite o nome do usuário...">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome do usuário...">
               </div>              
               <div class="form-group">
-                <label for="exampleInputEmail1">E-mail </label>
-                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite o E-mail">
+                <label for="emai">E-mail </label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Digite o E-mail">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Senha</label>
+                <label for="senha">Senha</label>
                 <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite a senha...">
               </div>
-              <button type="submit" class="btn btn-info" id="adiciona_user">Cadastrar</button>
+              <button class="btn btn-info" id="adiciona_user">Cadastrar</button>
             </form>
           </div>
         </div>

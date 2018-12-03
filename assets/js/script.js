@@ -100,40 +100,110 @@ $(function () {
 
 	//requisição ajax para cadastrar usuário
 
-	$('#adiciona_user').bind('click', function (e) {
+	// $('#adiciona_user').bind('click', function (e) {
+	// 	e.preventDefault();
+
+	// 	var nome = $('#nome').val();
+	// 	var email = $('#email').val();
+	// 	var senha = $('#senha').val();
+
+	// 	if (email.length > 0 && nome.length > 0) {
+	// 		$.ajax({
+	// 			type: "POST",
+	// 			url: "funcs/insere_user.php",
+	// 			data: {
+	// 				nome: nome,
+	// 				email: email,
+	// 				senha: senha
+	// 			},
+	// 			dataType: "json",
+	// 			success: function (resultado) {
+	// 				console.log(resultado.Status);
+	// 				if (resultado.Status == 'OK') {
+	// 					$('div #alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Usuário cadastrado!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+	// 				} else {
+	// 					$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar usuário,revise os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	// 				}
+	// 			}
+	// 		});
+	// 	} else {
+	// 		$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar,revise os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	// 	}
+	// 	$('#email').val("");
+	// 	$('#nome').val("");
+	// 	$('#senha').val("");
+	// });
+	
+	$('#add_user').bind('submit', function (e) {
 		e.preventDefault();
 
-		var nome = $('#nome').val();
-		var email = $('#email').val();
-		var senha = $('#senha').val();
-
-		if (email.length > 0 && nome.length > 0) {
-			$.ajax({
-				type: "POST",
-				url: "funcs/insere_user.php",
-				data: {
-					nome: nome,
-					email: email,
-					senha: senha
+		var form = $("#add_user");
+		
+		$("#add_user").validate({
+			//Aqui você deve mudar os valores, para os que você deseja validar, coloquei dados fakes para você poder visualizar
+			rules: {
+				nome:  {
+					required: true,
+					minWords: 2
 				},
-				dataType: "json",
-				success: function (resultado) {
-					console.log(resultado.Status);
-					if (resultado.Status == 'OK') {
-						$('div #alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Usuário cadastrado!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-
-					} else {
-						$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar usuário,revise os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					}
+				email: {
+					required: true,
+					email: true
+				},
+				senha: {
+					required: true,
+					minlength: 5,
+					maxlength: 15
 				}
-			});
-		} else {
-			$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar,revise os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		}
-		$('#email').val("");
-		$('#nome').val("");
-		$('#senha').val("");
+			},
+			messages: {
+				nome: {
+					required: "Favor preencher este campo",
+					minWords: "O nome precisa ter no mínimo duas palavras"
+				},
+				email: {
+					required: "Favor preencher este campo",
+					email: "Favor preencher com um e-mail válido"
+				},
+				senha: {
+					required: "Favor preencher este campo",
+					minlength: "Digite uma senha de no mínimo 5 caracteres",
+					maxlength: "Digite uma senha de no máximo 20 caracteres"
+				}
+			}
+		});
+
+			if (form.valid() == true) {
+				var data = $("#add_user").serializeArray();
+				console.log(data);
+
+				$.ajax({
+					type: "POST",
+					url: "funcs/insere_user.php",
+					data: data,
+					dataType: "json",
+					success: function(resultado) {
+						if (resultado.Status == 'ok') {
+							$('div #alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Usuário cadastrado!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+							
+							$('#email').val("");
+							$('#nome').val("");
+						   	$('#senha').val("");
+						} else {
+							$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar usuário, verifique os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+						}
+					}
+				});
+
+				return false;
+			} else {
+				$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar usuário, verifique os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			}
+				
 	});
+
+
 
 	// scroll edição de dados user 
 
