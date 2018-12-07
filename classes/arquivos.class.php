@@ -121,8 +121,8 @@ class Arquivo extends BD{
             }  
     }
     
-    public function getTotalArquivos(){
-		$sql = "SELECT COUNT (id) as contagem FROM arquivos WHERE id_para ='1'";
+    public function getTotalArquivos($id_de){
+		$sql = "SELECT COUNT (id) as contagem FROM arquivos WHERE id_para ='1' AND id_de = $id_de";
 		$sql = $this->pdo->query($sql);
 	
 		if($sql->execute()){

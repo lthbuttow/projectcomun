@@ -39,7 +39,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
       </div>
     </nav>
       <?php
-      $total_arquivos = $arquivo->getTotalArquivos();
+      $total_arquivos = $arquivo->getTotalArquivos($id_de);
       $total_arquivos = $total_arquivos['contagem'];
       $qt_por_pag = 4;
       $paginas = $total_arquivos / $qt_por_pag;
@@ -58,25 +58,22 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
     		echo $_SESSION['mensagem'];
     		unset($_SESSION['mensagem']);
     	}
-    	?>   
-        <div class="row">
-        <div class="col-md-12 ">
-        <nav aria-label="breadcrumb">
+    	?> 
+      <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="admin.php" style="color: #2c3e50;">Painel do Administrador</a></li>
             <li class="breadcrumb-item"><a href="menu_users.php" style="color: #2c3e50;">Menu de Usuários</a></li>
             <li class="breadcrumb-item active" aria-current="page">Lista de Arquivos</li>
           </ol>
         </nav>
-        </div>
-        </div>
-        <div class="row">
-        <div class="col-md-12 ">
         <div class="row">
             <div class="col-md-12 text-left mb-1">
               <a class="btn btn-success" href="envia.php?id_user=<?php echo $id_de; ?>" role="button">ENVIAR ARQUIVO</a>
             </div>
-        </div>                
+        </div>          
+        <div class="row">
+        <div class="col-md-12 ">
+               
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -102,8 +99,6 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                         ?>
                     </tbody>
                 </table>
-            </div> 
-            </div>
             <?php
               echo '<ul class="pagination justify-content-center mb-4>';
               for($q=0; $q<$paginas; $q++){
@@ -112,7 +107,9 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
               echo $paginacao;
               }
               echo '</ul>';
-            ?>          
+            ?>
+            </div> 
+            </div>                      
           </div>
         </div>
         </div>       

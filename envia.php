@@ -51,13 +51,13 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
             <div id="alert">
             
             </div>
-            <form action="funcs/envia_arquivos.php?id_para=<?php echo $id_para;?>" method="POST" enctype="multipart/form-data">
+            <form action="funcs/envia_arquivos.php?id_para=<?php echo $id_para;?>" method="POST" enctype="multipart/form-data" id="form_envia_user">
                   <div class="form-group">
                     <label for="arquivo"><h3>Envie seus arquivos aqui</h3></label>
                     <input type="file" name="arquivo" class="form-control-file" id="arquivo" aria-describedby="enviodearquivos">
                   </div> 
                   <div class="form-group">
-                    <label for="message">Deixe seu comentário aqui</label>
+                    <label for="comment">Deixe seu comentário aqui</label>
                     <textarea id="comment" name="comment" class="form-control" rows="5" placeholder="Digite sua mensagem..."></textarea>
                   </div>                               
                   <button type="submit" class="btn btn-primary" id="envia_arquivo">Enviar</button>

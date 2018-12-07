@@ -65,75 +65,69 @@ $(function () {
 		$(this).css('background-color', '#FFF')
 	});
 
-	//requisição ajax envio de e-mail
 
-	$('#enviaEmail').bind('click', function (e) {
+	//requisição ajax envio de e-mail
+	$('#contactForm').bind('submit', function (e) {
 		e.preventDefault();
 
-		var email = $('#email').val();
-		var mensagem = $('#message').val();
-
-		if (email.length > 0 && mensagem.length > 0) {
-			$.ajax({
-				type: "POST",
-				url: "funcs/contato_enviar.php",
-				data: {
-					email: email,
-					mensagem: mensagem
+		var form = $("#contactForm");
+		
+		$("#contactForm").validate({
+			rules: {
+				email: {
+					required: true,
+					email: true
 				},
-				dataType: "json",
-				success: function (resultado) {
-					if (resultado.Status == 'OK') {
-						$('div #alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Enviado! </strong>Sua mensagem foi enviada, retornaremos em breve!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-
-					} else {
-						$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível enviar sua mensagem,revise seus dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-					}
+				message: {
+					required: true,
+					minlength: 5,
+					maxlength: 15
 				}
-			});
-		} else {
-			$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível enviar sua mensagem, pelo menos um campo não foi preenchido!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		}
-		$('#email').val("");
-		$('#message').val("");
+			},
+			messages: {
+				email: {
+					required: "Favor preencher este campo",
+					email: "Favor preencher com um e-mail válido"
+				},
+				message: {
+					required: "Favor preencher este campo",
+					minlength: "Digite uma mensagem de no mínimo 5 caracteres",
+					maxlength: "Digite uma mensagem de no máximo 300 caracteres"
+				}
+			}
+		});
+
+			if (form.valid() == true) {
+				var data = $("#contactForm").serializeArray();
+				console.log(data);
+
+				$.ajax({
+					type: "POST",
+					url: "funcs/contato_enviar.php",
+					data: data,
+					dataType: "json",
+					success: function(resultado) {
+						if (resultado.Status == 'OK') {
+							$('div #alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Sua mensagem foi enviada, retornaremos em breve!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+							
+							$('#email').val("");
+							$('#message').val("");
+
+						} else {
+							$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível enviar sua mensagem, pelo menos um campo não foi preenchido!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+						}
+					}
+				});
+
+				return false;
+			} else {
+				$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível enviar sua mensagem tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			}
+				
 	});
 
-	//requisição ajax para cadastrar usuário
 
-	// $('#adiciona_user').bind('click', function (e) {
-	// 	e.preventDefault();
-
-	// 	var nome = $('#nome').val();
-	// 	var email = $('#email').val();
-	// 	var senha = $('#senha').val();
-
-	// 	if (email.length > 0 && nome.length > 0) {
-	// 		$.ajax({
-	// 			type: "POST",
-	// 			url: "funcs/insere_user.php",
-	// 			data: {
-	// 				nome: nome,
-	// 				email: email,
-	// 				senha: senha
-	// 			},
-	// 			dataType: "json",
-	// 			success: function (resultado) {
-	// 				console.log(resultado.Status);
-	// 				if (resultado.Status == 'OK') {
-	// 					$('div #alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Usuário cadastrado!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-
-	// 				} else {
-	// 					$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar usuário,revise os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-	// 				}
-	// 			}
-	// 		});
-	// 	} else {
-	// 		$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível cadastrar,revise os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-	// 	}
-	// 	$('#email').val("");
-	// 	$('#nome').val("");
-	// 	$('#senha').val("");
-	// });
+// Validação add_user
 	
 	$('#add_user').bind('submit', function (e) {
 		e.preventDefault();
@@ -141,7 +135,6 @@ $(function () {
 		var form = $("#add_user");
 		
 		$("#add_user").validate({
-			//Aqui você deve mudar os valores, para os que você deseja validar, coloquei dados fakes para você poder visualizar
 			rules: {
 				nome:  {
 					required: true,
@@ -176,7 +169,6 @@ $(function () {
 
 			if (form.valid() == true) {
 				var data = $("#add_user").serializeArray();
-				console.log(data);
 
 				$.ajax({
 					type: "POST",
@@ -203,7 +195,57 @@ $(function () {
 				
 	});
 
+	// Enviar arquivos administrador
 
+	$('#form_envia_user').validate({
+		rules: {
+			arquivo: {
+				required: true
+			},
+			comment: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			}
+		},
+		messages: {
+			arquivo: {
+				required: "Você precisa selecionar um arquivo!",
+
+			},
+			comment: {
+				required: "Favor preencher este campo",
+				minlength: "Digite uma mensagem de no mínimo 5 caracteres",
+				maxlength: "Digite uma mensagem de no máximo 300 caracteres"
+			}
+		}		
+	})
+
+	// Enviar arquivos administrador
+
+	$('#form_envia_arquivos_user').validate({
+		rules: {
+			arquivo: {
+				required: true
+			},
+			comment: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			}
+		},
+		messages: {
+			arquivo: {
+				required: "Você precisa selecionar um arquivo!",
+
+			},
+			comment: {
+				required: "Favor preencher este campo",
+				minlength: "Digite uma mensagem de no mínimo 5 caracteres",
+				maxlength: "Digite uma mensagem de no máximo 300 caracteres"
+			}
+		}		
+	})	
 
 	// scroll edição de dados user 
 
@@ -284,7 +326,7 @@ $(function () {
 	console.log(window.location.pathname);
 	if (window.location.pathname == '/projetocomun/chat.php') {
 
-		setInterval("atualizar()", 3000);
+		setInterval("atualizar()", 2000);
 	}
 	$('#form-chat').bind('submit', function (e) {
 
@@ -380,67 +422,35 @@ $(function () {
 		});
 		$(location).attr('href', 'caixa_arquivos_admin.php?id_user='+id);
 	});
-	
-	// bloqueio do botão de envio de arquivos
-
-	$("#arquivo").change(function(){
-		$("#envia_arquivos").attr("disabled", false);
-	});
 
 
-	$(".excluir").bind('click', function(e){
-
+	$('.excluir').bind('click', function (e) {
 		e.preventDefault();
+
 		var teste = $(this).attr("href");
 		var repartido = teste.split('=');
 		var id_user = repartido[1];
+		console.log(id_user);
 
 		$.ajax({
-			type: 'POST',
-			url: 'funcs/exclui_user.php',
-			data: {id_user:id_user},
-			dataType: 'json',
-			success: function (html) {
-				bootbox.confirm({
-					message:'Você realmente deseja excluir esse usuário?',
-					callback: function(confirmacao){
-				  
-					  if (confirmacao)
-						bootbox.alert('Usuário excluído com sucesso.');
-					  else
-						bootbox.alert('Operação cancelada.');
-					
-					},
-					buttons: {
-					  cancel: {label: 'Cancelar',className:'btn-default'},
-					  confirm: {label: 'Excluir',className:'btn-danger'}
-					  
-					}
-				  });
+			type: "POST",
+			url: "funcs/exclui_user.php",
+			data: {
+				id_user: id_user
 			},
-			error: function () {
-				alert("Ocorreu um erro");
+			dataType: "json",
+			success: function (resultado) {
+				if (resultado.Status == 'OK') {
+					$('#alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Usuário excluído!!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+				} else {
+					$('#alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível deletar o usuário!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+				}
 			}
 		});
+	});
+			
 	
-	});	
-
-	// $(".excluir").bind('click', function(){
-	// 	confirmacao();
-	// });
-
-	// $('.excluir').click(												
-	// 	function(e) {
-	// 	e.preventDefault();
-	// 	var object = $(this).attr('data-object');					
-	// 	var location = $(this).attr('href');
-	// 	bootbox.confirm("<div align='center' class='mbaixo2 mTop2'>Deseja apagar o registro "+object+"?<br />Esta operação não poderá ser desfeita!</div>", function(confirmed) {
-	// 		if(confirmed) {
-	// 	window.location.replace(location);
-	// 	}
-	// 		});
-	// 	});			
-	  
 
 });
 

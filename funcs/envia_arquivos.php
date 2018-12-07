@@ -23,7 +23,7 @@ if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
 			$nm_concat = implode($nm);
 			$nm_final = strtolower($nm_concat);
 
-			$nome_arquivo = $nm_final.md5(time().rand(0,99)).'.png';
+			$nome_arquivo = 'documento'.$nm_final.rand(0,99999).'.png';
 			move_uploaded_file($file['tmp_name'], '../arquivos/'.$nome_arquivo);
 
 			$result = $arquivo->addArquivo($id_de,$id_para,$nome_arquivo,$comentario);
@@ -58,7 +58,7 @@ if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
 			$nm_concat = implode($nm);
 			$nm_final = strtolower($nm_concat);
 
-			$nome_arquivo = $nm_final.date('Y-m-d H:i:s').'.pdf';
+			$nome_arquivo = 'documento'.$nm_final.rand(0,99999).'.pdf';
 			move_uploaded_file($file['tmp_name'], '../arquivos/'.$nome_arquivo);
 
 			$result = $arquivo->addArquivo($id_de,$id_para,$nome_arquivo,$comentario);

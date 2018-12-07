@@ -5,10 +5,10 @@ $array = array('Status' => 'Vazio' );
 
 
 $contato = new Contato();
-if (!empty($_POST['email']) && !empty($_POST['mensagem'])) {
+if (!empty($_POST['email']) && !empty($_POST['message'])) {
 
 $email = $_POST['email'];
-$text = $_POST['mensagem'];
+$text = $_POST['message'];
 
 } else {
 	$array = array('Status' => 'ERRO' );

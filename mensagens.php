@@ -51,7 +51,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
         $contato = $contato->getAll();
         ?>
         <div class="row justify-content-center mt-4 mb-5">
-            <div class="col-md-6 ">
+            <div class="col-md-12 ">
             <div class="table-responsive">
                 <table class="table">
                     <thead>

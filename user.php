@@ -92,16 +92,16 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
           <!-- envio de arquivos-->
           <div class="row justify-content-center mt-4 mb-5" id="envia">
             <div class="col-md-6">
-              <form action="funcs/envia_arquivos.php?id_para=<?php echo $result['id_user'];?>" method="POST" enctype="multipart/form-data">
+              <form action="funcs/envia_arquivos.php?id_para=<?php echo $result['id_user'];?>" method="POST" enctype="multipart/form-data" id="form_envia_arquivos_user">
                   <div class="form-group">
                     <label for="arquivo">Envie seus arquivos aqui</label>
                     <input type="file" name="arquivo" class="form-control-file" id="arquivo" aria-describedby="enviodearquivos">
                   </div> 
                   <div class="form-group">
-                    <label for="message">Deixe seu comentário aqui</label>
+                    <label for="comment">Deixe seu comentário aqui</label>
                     <textarea id="comment" name="comment" class="form-control" rows="5" placeholder="Digite sua mensagem..."></textarea>
                   </div>                               
-                  <button type="submit" class="btn btn-primary" id="envia_arquivos" disabled="true">Enviar</button>
+                  <button type="submit" class="btn btn-primary" id="envia_arquivos">Enviar</button>
               </form> 
             </div>         
           </div> 
