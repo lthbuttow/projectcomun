@@ -25,13 +25,13 @@ $(function () {
 
 		if ($(this).scrollTop() > 70) {
 			$('#mainNav').addClass('bg-white')
-			$('nav a').css('color', '#F4511E')
-			$('nav li a').css('color', '#2c3e50')
-			$('nav').addClass('border')
+			$('#mainNav a').css('color', '#F4511E')
+			$('#mainNav li a').css('color', '#2c3e50')
+			$('#mainNav').addClass('border')
 		} else {
 			$('#mainNav').removeClass('bg-white')
-			$('nav a').removeAttr('style')
-			$('nav').removeClass('border')
+			$('#mainNav a').removeAttr('style')
+			$('#mainNav').removeClass('border')
 		}
 	});
 
@@ -422,35 +422,6 @@ $(function () {
 		});
 		$(location).attr('href', 'caixa_arquivos_admin.php?id_user='+id);
 	});
-
-
-	$('.excluir').bind('click', function (e) {
-		e.preventDefault();
-
-		var teste = $(this).attr("href");
-		var repartido = teste.split('=');
-		var id_user = repartido[1];
-		console.log(id_user);
-
-		$.ajax({
-			type: "POST",
-			url: "funcs/exclui_user.php",
-			data: {
-				id_user: id_user
-			},
-			dataType: "json",
-			success: function (resultado) {
-				if (resultado.Status == 'OK') {
-					$('#alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Usuário excluído!!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-
-				} else {
-					$('#alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível deletar o usuário!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				}
-			}
-		});
-	});
-			
-	
-
+				
 });
 

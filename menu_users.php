@@ -108,8 +108,8 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
                         <tr>
                         <td>'.$dados['nome'].'</td>
                         <td>'.$dados['email'].'</td>
-                        <td><button type="button" class="btn btn-secondary">Editar</button></td>
-                        <td><a class="btn btn-danger excluir" href="funcs/exclui_users.php?id_user='. $dados['id_user'].'">Excluir</a></td>
+                        <td><a class="btn btn-info" href="edita_users.php?id_user='. $dados['id_user'].'">Editar</a></td>
+                        <td><a class="btn btn-danger excluir" href="funcs/exclui_user.php?id_user='. $dados['id_user'].'">Excluir</a></td>
                         <td><a class="btn btn-warning" href="chat.php?id_para='. $dados['id_user'].'">Iniciar</a></td>                   
                         <td><a class="btn btn-primary acessa" href="caixa_arquivos_admin.php?id_user='.$dados['id_user'].'"">Arquivos</a></td>
                         </tr>';
