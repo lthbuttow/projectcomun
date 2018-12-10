@@ -292,37 +292,128 @@ $(function () {
 	});
 
 	//requisição para eviar os dados do usuário editado
-	$('#envia_alter').bind('click', function (e) {
+	// $('#envia_alter').bind('click', function (e) {
+	// 	e.preventDefault();
+
+	// 	var id = $('#id_user').val();
+	// 	var nome = $('#nome').val();
+	// 	var email = $('#email').val();
+	// 	var senha = $('#senha').val()
+
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: "funcs/edita_user.php",
+	// 		data: {
+	// 			id_user: id,
+	// 			nome: nome,
+	// 			email: email,
+	// 			senha: senha
+	// 		},
+	// 		dataType: "json",
+	// 		success: function (resultado) {
+	// 			if (resultado.Status == 'OK') {
+	// 				$('#alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Salvamos seus dados!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	// 			} else {
+	// 				$('#alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível encontrar os dados, e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	// 			}
+	// 		}
+	// 	});
+	// });
+
+	//requisição para eviar os dados do usuário editado(validação)
+
+	$('#form_editar').bind('submit', function (e) {
 		e.preventDefault();
 
-		var id = $('#id_user').val();
-		var nome = $('#nome').val();
-		var email = $('#email').val();
-		var senha = $('#senha').val()
-
-		$.ajax({
-			type: "POST",
-			url: "funcs/edita_user.php",
-			data: {
-				id_user: id,
-				nome: nome,
-				email: email,
-				senha: senha
+		var form = $("#form_editar");
+		
+		$("#form_editar").validate({
+			rules: {
+				nome:  {
+					required: true,
+					minWords: 2
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				senha: {
+					required: true,
+					minlength: 5,
+					maxlength: 15
+				}
 			},
-			dataType: "json",
-			success: function (resultado) {
-				if (resultado.Status == 'OK') {
-					$('#alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Salvamos seus dados!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-				} else {
-					$('#alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível encontrar os dados, e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			messages: {
+				nome: {
+					required: "Favor preencher este campo",
+					minWords: "O nome precisa ter no mínimo duas palavras"
+				},
+				email: {
+					required: "Favor preencher este campo",
+					email: "Favor preencher com um e-mail válido"
+				},
+				senha: {
+					required: "Favor preencher este campo",
+					minlength: "Digite uma senha de no mínimo 5 caracteres",
+					maxlength: "Digite uma senha de no máximo 20 caracteres"
 				}
 			}
 		});
+
+			if (form.valid() == true) {
+				var data = $("#form_editar").serializeArray();
+
+				$.ajax({
+					type: "POST",
+					url: "funcs/edita_user.php",
+					data: data,
+					dataType: "json",
+					success: function (resultado) {
+						if (resultado.Status == 'OK') {
+							$('#alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Salvamos seus dados!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+						} else {
+							$('#alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível encontrar os dados, e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+						}
+					}
+				});
+
+				return false;
+			} else {
+				$('div #alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível editar usuário, verifique os dados e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			}
+				
 	});
 
-	// scroll do chat
 
-	// setInterval("atualizar()", 3000);
+	// $('#envia_alter').bind('click', function (e) {
+	// 	e.preventDefault();
+
+	// 	var id = $('#id_user').val();
+	// 	var nome = $('#nome').val();
+	// 	var email = $('#email').val();
+	// 	var senha = $('#senha').val()
+
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: "funcs/edita_user.php",
+	// 		data: {
+	// 			id_user: id,
+	// 			nome: nome,
+	// 			email: email,
+	// 			senha: senha
+	// 		},
+	// 		dataType: "json",
+	// 		success: function (resultado) {
+	// 			if (resultado.Status == 'OK') {
+	// 				$('#alert').html('<div class="alert alert-primary alert-dismissible fade show" role="alert"><strong>Sucesso! </strong>Salvamos seus dados!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	// 			} else {
+	// 				$('#alert').html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Erro! </strong>Não foi possível encontrar os dados, e tente novamente!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+	// 			}
+	// 		}
+	// 	});
+	// });	
+
+	// scroll do chat
 	console.log(window.location.pathname);
 	if (window.location.pathname == '/projetocomun/chat.php') {
 

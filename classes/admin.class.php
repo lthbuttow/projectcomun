@@ -11,7 +11,7 @@ class Admin extends BD{
 		$sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
 		$sql = $this->pdo->prepare($sql);
 		$sql->bindValue(':email', $email);
-		$sql->bindValue(':senha', $senha);
+		$sql->bindValue(':senha', md5($senha));
 		
 		if($sql->execute()){
 
@@ -28,7 +28,7 @@ class Admin extends BD{
 		$sql = $this->pdo->prepare($sql);
 		$sql->bindValue(':nome', $nome);
 		$sql->bindValue(':email', $email);
-		$sql->bindValue(':senha', $senha);
+		$sql->bindValue(':senha', md5($senha));
 		
 		if($sql->execute()){
 		
@@ -51,6 +51,20 @@ class Admin extends BD{
 	} else{
 		return false;
 		}		
+	}
+
+	public function getSenhaPadrao($id_user){
+		$sql = $this->pdo->prepare("SELECT senha FROM usuarios WHERE senha = md5('12345') AND admin ='0' AND id_user = :id_user");
+		$sql->bindValue(":id_user", $id_user);
+	
+		if($sql->execute()){
+
+		$result = $sql->fetch();
+		
+		return $result;
+	} else{
+		return false;
+		}
 	}
 }
 ?>

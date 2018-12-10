@@ -9,7 +9,8 @@ include 'assets/hf/header.php';
     		unset($_SESSION['mensagem']);
     	}
     	?>
-      <img class="mb-3" src="assets/img/gerente.png" alt="" width="72" height="72">
+      <a href="index.php" data-toggle="tooltip" data-placement="top" title="Clique para voltar para a página principal">
+      <img class="mb-3" src="assets/img/gerente.png" alt="gerente" width="72" height="72"></a>
       <h3 class="h3 text-center font-weight-normal mb-4">FAÇA SEU LOGIN</h3>
       <label for="inputEmail" class="sr-only">Email</label>
       <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Digite seu e-mail..." required autofocus>

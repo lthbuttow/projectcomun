@@ -1,5 +1,6 @@
 <?php 
 include 'assets/hf/header.php';
+include 'funcs/function.php';
 include 'classes/arquivos.class.php';
 $arquivo = NEW Arquivo();  
 if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
@@ -91,7 +92,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                         <tr>
                         <th scope="row">'.$arquivo['link'].'</th>
                         <td>'.$arquivo['comentario'].'</td>
-                        <td>'.$arquivo['dt_envio'].'</td>
+                        <td>'.data_br($arquivo['dt_envio']).'</td>
                         <td><a href="arquivos/'. $arquivo['link'].'" download class="btn btn-info">Baixar</a></td>
                         </tr>';
                         echo $html;

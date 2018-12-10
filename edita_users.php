@@ -1,6 +1,10 @@
 <?php 
-include 'assets/hf/header.php'; 
+include 'assets/hf/header.php';
+require 'classes/user.class.php';
+$user = new User();
 if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
+
+$id_user = $_GET['id_user'];
 ?>
 <!-- topo -->
 <body>
@@ -44,26 +48,29 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
           <li class="breadcrumb-item active" aria-current="page">Editar Usuário</li>
         </ol>
       </nav>
-
+            <?php
+            $dados = $user->getDadosEdita($id_user);
+            ?>
         <div class="row justify-content-center mt-4 mb-2">
           <div class="col-lg-6 col-md-6">
             <div id="alert">
             
             </div>
-            <form id="add_user">
+            <form id="editar_usuario">
+              <input type="hidden" id="id_user" name="id_user" value="<?php echo $dados["id_user"]; ?>">
               <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome do usuário...">
+                <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome do usuário..." value="<?php echo $dados["nome"]; ?>">
               </div>              
               <div class="form-group">
                 <label for="emai">E-mail </label>
-                <input type="email" name="email" class="form-control" id="email" placeholder="Digite o E-mail">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Digite o E-mail" value="<?php echo $dados["email"]; ?>">
               </div>
               <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite a senha...">
+                <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite a senha..." value="<?php echo $dados["senha"]; ?>">
               </div>
-              <button class="btn btn-info" id="adiciona_user">Confirmar</button>
+              <button class="btn btn-info" id="envia_alter">Confirmar</button>
             </form>
           </div>
         </div>

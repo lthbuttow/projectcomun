@@ -11,7 +11,7 @@ class User extends BD{
 		$sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha AND admin = '0'";
 		$sql = $this->pdo->prepare($sql);
 		$sql->bindValue(':email', $email);
-		$sql->bindValue(':senha', $senha);
+		$sql->bindValue(':senha', md5($senha));
 		
 		if($sql->execute()){
 
@@ -28,7 +28,7 @@ class User extends BD{
 		$sql = $this->pdo->prepare($sql);
 		$sql->bindValue(':nome', $nome);
 		$sql->bindValue(':email', $email);
-		$sql->bindValue(':senha', $senha);
+		$sql->bindValue(':senha', md5($senha));
 		
 		if($sql->execute()){
 		
@@ -54,13 +54,28 @@ class User extends BD{
 		}
 	}
 
+	public function getDadosEdita($id_user){
+		$sql = "SELECT * FROM usuarios WHERE id_user = :id_user";
+		$sql = $this->pdo->prepare($sql);
+		$sql->bindValue(':id_user', $id_user);
+		
+		if($sql->execute()){
+
+		$result = $sql->fetch();
+		
+		return $result;
+	} else{
+		return false;
+		}
+	}	
+
 	public function editar($id_user,$nome,$email,$senha){
 		$sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id_user = :id_user";
 		$sql = $this->pdo->prepare($sql);
 		$sql->bindValue(':id_user', $id_user);
 		$sql->bindValue(':nome', $nome);
 		$sql->bindValue(':email', $email);
-		$sql->bindValue(':senha', $senha);
+		$sql->bindValue(':senha', md5($senha));
 		
 		if($sql->execute()){
 		
@@ -138,5 +153,6 @@ class User extends BD{
 		return false;
 		}
 	}
+	
 }
 ?>

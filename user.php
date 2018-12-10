@@ -36,14 +36,25 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
     </nav>
       <?php
       require 'classes/admin.class.php';
+
+      $id_user = $_SESSION['id_user'];
       $admin = NEW Admin(); 
       $result = $admin->getAdmin();
+      $res = $admin->getSenhaPadrao($id_user);
       ?>
     <article class="mastheads article text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
             <div class="col-md-6 mx-auto">
-            <?php 
+            <?php
+              $html='<div class="alert alert-warning" role="alert">
+              Atenção! Sua senha padrão é 12345, recomendamos a troca da senha, para maior segurança!
+              </div>';
+              
+              if($res['senha'] == md5('12345')){
+                echo $html;
+              }
+              
               if (isset($_SESSION['mensagem'])) {
                 echo $_SESSION['mensagem'];
                 unset($_SESSION['mensagem']);
