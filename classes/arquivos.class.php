@@ -49,7 +49,7 @@ class Arquivo extends BD{
     }
 
     public function meusArquivosAdminPag($id_de,$id_para,$p,$qt_por_pag){
-        $sql = $this->pdo->prepare("SELECT * FROM arquivos WHERE id_de = :id_de AND  id_para = :id_para LIMIT $qt_por_pag OFFSET $p");
+        $sql = $this->pdo->prepare("(SELECT * FROM arquivos WHERE id_de = :id_de AND  id_para = :id_para LIMIT $qt_por_pag OFFSET $p) ORDER BY dt_envio DESC");
         $sql->bindValue(":id_de", $id_de);
         $sql->bindValue(":id_para", $id_para);
         

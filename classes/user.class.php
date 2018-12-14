@@ -113,7 +113,7 @@ class User extends BD{
 	}
 
 	public function getUsuariosPagination($p,$qt_por_pag){
-		$sql = "(SELECT * FROM usuarios WHERE admin ='0' LIMIT $qt_por_pag OFFSET $p) ORDER BY id_user";
+		$sql = "(SELECT * FROM usuarios WHERE admin ='0' LIMIT $qt_por_pag OFFSET $p) ORDER BY id_user DESC";
 		$sql = $this->pdo->query($sql);
 	
 		if($sql->execute()){

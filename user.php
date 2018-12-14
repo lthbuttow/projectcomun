@@ -48,7 +48,7 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
             <div class="col-md-6 mx-auto">
             <?php
               $html='<div class="alert alert-warning" role="alert">
-              Atenção! Sua senha padrão é 12345, recomendamos a troca da senha, para maior segurança!
+              Atenção! Sua senha padrão é 12345, recomendamos a troca da senha para maior segurança!
               </div>';
               
               if($res['senha'] == md5('12345')){

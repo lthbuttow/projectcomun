@@ -40,7 +40,7 @@ class Admin extends BD{
 	}
 
 	public function getAdmin(){
-		$sql = "SELECT * FROM usuarios WHERE admin = '1'";
+		$sql = "SELECT * FROM usuarios WHERE admin = '1' and id_user = '1'";
 		$sql = $this->pdo->query($sql);
 		
 		if($sql->execute()){

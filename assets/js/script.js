@@ -417,7 +417,7 @@ $(function () {
 	console.log(window.location.pathname);
 	if (window.location.pathname == '/projetocomun/chat.php') {
 
-		setInterval("atualizar()", 2000);
+		setInterval("atualizar()", 3000);
 	}
 	$('#form-chat').bind('submit', function (e) {
 
